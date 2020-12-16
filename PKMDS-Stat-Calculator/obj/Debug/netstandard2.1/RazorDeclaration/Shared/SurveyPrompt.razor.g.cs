@@ -82,16 +82,6 @@ using PKMDS_Stat_Calculator.Shared;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 12 "C:\Users\mbond\Documents\GitHub\PKMDS-Stat-Calculator\PKMDS-Stat-Calculator\Shared\SurveyPrompt.razor"
-       
-    // Demonstrates how a parent component can supply parameters
-    [Parameter]
-    public string Title { get; set; }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591

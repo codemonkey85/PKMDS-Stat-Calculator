@@ -1,11 +1,12 @@
-@page "/fetchdata"
+@page "/"
 @inject HttpClient Http
+@using PokemonApiHelper.Models.Pokemon
 
-<h1>Weather forecast</h1>
+<h1>Pokemon API Test</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (forecasts == null)
+@if (pokemon == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -14,42 +15,32 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                @*<th></th>*@
+                <th>Id</th>
+                <th>Name</th>
+                <th>HP</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Special Attack</th>
+                <th>Special Defense</th>
+                <th>Speed</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (Pokemon pokemon in pokemon)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
+                    @*<td><img src="@pokemon.Sprites.FrontDefault" /></td>*@
+                    <td>@pokemon.Id.ToString()</td>
+                    <td>@pokemon.Name</td>
+                    <td>@pokemon.Stats[0].BaseStat</td>
+                    <td>@pokemon.Stats[1].BaseStat</td>
+                    <td>@pokemon.Stats[2].BaseStat</td>
+                    <td>@pokemon.Stats[3].BaseStat</td>
+                    <td>@pokemon.Stats[4].BaseStat</td>
+                    <td>@pokemon.Stats[5].BaseStat</td>
                 </tr>
             }
         </tbody>
     </table>
-}
-
-@code {
-    private WeatherForecast[] forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
-    }
-
-    public class WeatherForecast
-    {
-        public DateTime Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
 }

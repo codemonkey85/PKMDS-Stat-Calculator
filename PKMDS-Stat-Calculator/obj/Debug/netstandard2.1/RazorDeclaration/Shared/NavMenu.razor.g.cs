@@ -82,21 +82,6 @@ using PKMDS_Stat_Calculator.Shared;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 28 "C:\Users\mbond\Documents\GitHub\PKMDS-Stat-Calculator\PKMDS-Stat-Calculator\Shared\NavMenu.razor"
-       
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-
-#line default
-#line hidden
-#nullable disable
     }
 }
 #pragma warning restore 1591
