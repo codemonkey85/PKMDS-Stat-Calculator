@@ -6,14 +6,51 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (pokemonList == null)
+@if (!(pokemonNames?.Any() ?? false))
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    @foreach (Pokemon pokemon in pokemonList)
-    {
+    <select @bind="selectedPokemon">
+        <option value=@string.Empty>(Select)</option>
+        @foreach (string pokemonName in pokemonNames)
+        {
+            <option value="@pokemonName">@pokemonName</option>
+        }
+    </select>
 
-    }
+    <button @onclick="@(async e => await ButtonClicked())">Get Stats</button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                @*<th></th>*@
+                <th>Id</th>
+                <th>Name</th>
+                <th>HP</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Special Attack</th>
+                <th>Special Defense</th>
+                <th>Speed</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Pokemon pokemon in pokemonList)
+            {
+                <tr>
+                    @*<td><img src="@pokemon.Sprites.FrontDefault" /></td>*@
+                    <td>@pokemon.Id.ToString()</td>
+                    <td>@pokemon.Name</td>
+                    <td>@pokemon.Stats[0].BaseStat</td>
+                    <td>@pokemon.Stats[1].BaseStat</td>
+                    <td>@pokemon.Stats[2].BaseStat</td>
+                    <td>@pokemon.Stats[3].BaseStat</td>
+                    <td>@pokemon.Stats[4].BaseStat</td>
+                    <td>@pokemon.Stats[5].BaseStat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
