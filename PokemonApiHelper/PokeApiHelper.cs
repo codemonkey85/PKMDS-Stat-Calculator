@@ -23,27 +23,23 @@ namespace PokemonApiHelper
 
         public static async IAsyncEnumerator<Pokemon> GetMultiplePokemon(int limit = 0, int offset = 0)
         {
-            List<Pokemon> pokemonList = new List<Pokemon>();
-            UriBuilder builder = new UriBuilder(@$"{pokeApiUrl}pokemon");
-            NameValueCollection query = HttpUtility.ParseQueryString(builder.Query);
+            UriBuilder urlBuilder = new UriBuilder(@$"{pokeApiUrl}pokemon");
+            NameValueCollection queryString = HttpUtility.ParseQueryString(urlBuilder.Query);
             if (limit > 0)
             {
-                query[nameof(limit)] = limit.ToString();
+                queryString[nameof(limit)] = limit.ToString();
             }
             if (offset > 0)
             {
-                query[nameof(offset)] = offset.ToString();
+                queryString[nameof(offset)] = offset.ToString();
             }
-            builder.Query = query.ToString();
+            urlBuilder.Query = queryString.ToString();
 
-            NamedAPIResourceList resourceList = await HttpClient.GetFromJsonAsync<NamedAPIResourceList>(builder.ToString());
-            foreach (NamedAPIResource resource in resourceList.Results)
+            NamedApiResourceList resourceList = await HttpClient.GetFromJsonAsync<NamedApiResourceList>(urlBuilder.ToString());
+            foreach (NamedApiResource resource in resourceList.Results)
             {
-                Pokemon pokemon = await HttpClient.GetFromJsonAsync<Pokemon>(resource.Url);
-                //pokemonList.Add(pokemon);
-                yield return pokemon;
+                yield return await HttpClient.GetFromJsonAsync<Pokemon>(resource.Url);
             }
-            //return pokemonList;
         }
     }
 }

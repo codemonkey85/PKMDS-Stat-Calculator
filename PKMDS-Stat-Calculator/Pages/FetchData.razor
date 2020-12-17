@@ -15,7 +15,7 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th></th>
+                @*<th></th>*@
                 <th>Id</th>
                 <th>Name</th>
                 <th>HP</th>
@@ -30,7 +30,7 @@ else
             @foreach (Pokemon pokemon in pokemonList)
             {
                 <tr>
-                    <td><img src="@pokemon.Sprites.FrontDefault" /></td>
+                    @*<td><img src="@pokemon.Sprites.FrontDefault" /></td>*@
                     <td>@pokemon.Id.ToString()</td>
                     <td>@pokemon.Name</td>
                     <td>@pokemon.Stats[0].BaseStat</td>

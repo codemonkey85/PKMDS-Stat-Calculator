@@ -1,6 +1,6 @@
-﻿using PokemonApiHelper.Models.Pokemon;
+﻿using PokemonApiHelper;
+using PokemonApiHelper.Models.Pokemon;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace PokemonApiTestApp
@@ -21,7 +21,7 @@ namespace PokemonApiTestApp
 
         private static async Task GetThePokemon()
         {
-            await foreach (Pokemon pokemon in PokemonApiHelper.PokeApiHelper.GetMultiplePokemon(100).GetAsyncEnumerator())
+            await foreach (Pokemon pokemon in PokeApiHelper.GetMultiplePokemon(100).GetAsyncEnumerator())
             {
                 Console.WriteLine(pokemon.Name);
             }
@@ -35,10 +35,5 @@ namespace PokemonApiTestApp
                 LogError(ex.InnerException);
             }
         }
-    }
-
-    internal static class Extensions
-    {
-        public static IAsyncEnumerator<T> GetAsyncEnumerator<T>(this IAsyncEnumerator<T> enumerator) => enumerator;
     }
 }
