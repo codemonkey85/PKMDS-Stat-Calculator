@@ -21,14 +21,11 @@ namespace PokemonApiHelper
 
         public static async Task<Pokemon> GetSinglePokemon(string pokemonIdOrName) => await HttpClient.GetFromJsonAsync<Pokemon>(@$"{pokeApiUrl}pokemon/{pokemonIdOrName}");
 
-        public static async IAsyncEnumerator<Pokemon> GetMultiplePokemon(int limit = 0, int offset = 0)
+        public static async IAsyncEnumerator<Pokemon> GetMultiplePokemon(int limit = -1, int offset = 0)
         {
             UriBuilder urlBuilder = new UriBuilder(@$"{pokeApiUrl}pokemon");
             NameValueCollection queryString = HttpUtility.ParseQueryString(urlBuilder.Query);
-            if (limit > 0)
-            {
-                queryString[nameof(limit)] = limit.ToString();
-            }
+            queryString[nameof(limit)] = limit.ToString();
             if (offset > 0)
             {
                 queryString[nameof(offset)] = offset.ToString();
@@ -39,6 +36,15 @@ namespace PokemonApiHelper
             foreach (NamedApiResource resource in resourceList.Results)
             {
                 yield return await HttpClient.GetFromJsonAsync<Pokemon>(resource.Url);
+            }
+        }
+
+        public static async IAsyncEnumerator<string> GetAllPokemonNames()
+        {
+            NamedApiResourceList resourceList = await HttpClient.GetFromJsonAsync<NamedApiResourceList>(@$"{pokeApiUrl}pokemon?limit=-1");
+            foreach (NamedApiResource resource in resourceList.Results)
+            {
+                yield return resource.Name;
             }
         }
     }

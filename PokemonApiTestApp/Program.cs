@@ -21,9 +21,9 @@ namespace PokemonApiTestApp
 
         private static async Task GetThePokemon()
         {
-            await foreach (Pokemon pokemon in PokeApiHelper.GetMultiplePokemon(100).GetAsyncEnumerator())
+            await foreach (var pokemon in PokeApiHelper.GetAllPokemonNames().GetAsyncEnumerator())
             {
-                Console.WriteLine(pokemon.Name);
+                Console.WriteLine(pokemon);
             }
         }
 
