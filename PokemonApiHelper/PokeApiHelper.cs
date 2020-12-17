@@ -21,7 +21,7 @@ namespace PokemonApiHelper
 
         public static async Task<Pokemon> GetSinglePokemon(string pokemonIdOrName) => await HttpClient.GetFromJsonAsync<Pokemon>(@$"{pokeApiUrl}pokemon/{pokemonIdOrName}");
 
-        public static async Task<IEnumerable<Pokemon>> GetMultiplePokemon(int limit = 0, int offset = 0)
+        public static async IAsyncEnumerator<Pokemon> GetMultiplePokemon(int limit = 0, int offset = 0)
         {
             var pokemonList = new List<Pokemon>();
             UriBuilder builder = new UriBuilder(@$"{pokeApiUrl}pokemon");
@@ -40,10 +40,10 @@ namespace PokemonApiHelper
             foreach (NamedAPIResource resource in resourceList.Results)
             {
                 Pokemon pokemon = await HttpClient.GetFromJsonAsync<Pokemon>(resource.Url);
-                //yield return pokemon;
-                pokemonList.Add(pokemon);
+                //pokemonList.Add(pokemon);
+                yield return pokemon;
             }
-            return pokemonList;
+            //return pokemonList;
         }
     }
 }

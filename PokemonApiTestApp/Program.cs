@@ -1,10 +1,11 @@
 ﻿using PokemonApiHelper.Models.Pokemon;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PokemonApiTestApp
 {
-    class Program
+    internal class Program
     {
         private static IList<Pokemon> pokemon = new List<Pokemon>();
 
@@ -14,11 +15,20 @@ namespace PokemonApiTestApp
         {
             try
             {
-                var test = PokemonApiHelper.PokeApiHelper.GetMultiplePokemon(1);
+                var test = GetThePokemon();
+                test.Wait();
             }
             catch (Exception ex)
             {
                 LogError(ex);
+            }
+        }
+
+        private static async Task GetThePokemon()
+        {
+            await foreach (var item in PokemonApiHelper.PokeApiHelper.GetMultiplePokemon(100).GetAsyncEnumerator())
+            {
+                Console.WriteLine(item.Name);
             }
         }
 
@@ -30,5 +40,10 @@ namespace PokemonApiTestApp
                 LogError(ex.InnerException);
             }
         }
+    }
+
+    internal static class Extensions
+    {
+        public static IAsyncEnumerator<T> GetAsyncEnumerator<T>(this IAsyncEnumerator<T> enumerator) => enumerator;
     }
 }
