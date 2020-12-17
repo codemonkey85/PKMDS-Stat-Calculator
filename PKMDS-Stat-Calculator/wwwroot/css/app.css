@@ -181,3 +181,8 @@ app {
         display: block;
     }
 }
+
+img.pokemon-sprite {
+    max-width: 50%;
+    max-height: 50%;
+}

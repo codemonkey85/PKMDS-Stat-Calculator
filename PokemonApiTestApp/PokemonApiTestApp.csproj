@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PokemonApiHelper\PokemonApiHelper.csproj" />
+    <PackageReference Include="PokeApiNet" Version="3.0.0" />
   </ItemGroup>
 
 </Project>

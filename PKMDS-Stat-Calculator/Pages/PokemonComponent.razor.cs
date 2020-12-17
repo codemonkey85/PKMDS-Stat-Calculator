@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using PokemonApiHelper.Models.Pokemon;
+using PokeApiNet;
 
 namespace PKMDS_Stat_Calculator.Pages
 {

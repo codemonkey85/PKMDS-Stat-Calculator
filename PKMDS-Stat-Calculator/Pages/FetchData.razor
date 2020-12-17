@@ -1,6 +1,7 @@
 @page "/"
 @inject HttpClient Http
-@using PokemonApiHelper.Models.Pokemon
+@inject PokeApiClient PokeApiClient
+@using PokeApiNet
 
 <h1>Pokemon API Test</h1>
 
@@ -29,7 +30,7 @@ else
     <table class="table">
         <thead>
             <tr>
-                @*<th></th>*@
+                <th></th>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Type</th>
@@ -45,7 +46,7 @@ else
             @foreach (Pokemon pokemon in pokemonList)
             {
                 <tr>
-                    @*<td><img src="@pokemon.Sprites.FrontDefault" /></td>*@
+                    <td><img class="pokemon-sprite" src="@pokemon.Sprites.FrontDefault" /></td>
                     <td>@pokemon.Id.ToString()</td>
                     <td>@pokemon.Name</td>
                     <td>@GetPokemonTypes(pokemon)</td>

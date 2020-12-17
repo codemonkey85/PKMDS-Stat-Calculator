@@ -1,5 +1,4 @@
-﻿using PokemonApiHelper;
-using PokemonApiHelper.Models.Pokemon;
+﻿using PokeApiNet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +17,11 @@ namespace PKMDS_Stat_Calculator.Pages
 
         private string errorMessage = null;
 
-        protected override async Task OnInitializedAsync()
-        {
-            await foreach (string pokemonName in PokeApiHelper.GetAllPokemonNames())
-            {
-                pokemonNames.Add(pokemonName);
-            }
-
-            pokemonNames = pokemonNames.OrderBy(p => p).ToList();
-        }
+        protected override async Task OnInitializedAsync() =>
+            pokemonNames = (await PokeApiClient.GetNamedResourcePageAsync<Pokemon>(-1, 0)).Results
+                .Select(pokemon => pokemon.Name)
+                .OrderBy(name => name)
+                .ToList();
 
         private async Task ButtonClicked()
         {
@@ -34,7 +29,7 @@ namespace PKMDS_Stat_Calculator.Pages
             {
                 if (!string.IsNullOrEmpty(selectedPokemon))
                 {
-                    pokemonList.Add(await PokeApiHelper.GetSinglePokemon(selectedPokemon));
+                    pokemonList.Add(await PokeApiClient.GetResourceAsync<Pokemon>(selectedPokemon));
                 }
             }
             catch (Exception ex)
@@ -63,11 +58,11 @@ namespace PKMDS_Stat_Calculator.Pages
         {
             string type1 = string.Empty;
             string type2 = string.Empty;
-            if (pokemon.Types.Length > 0)
+            if (pokemon.Types.Count > 0)
             {
                 type1 = pokemon.Types[0].Type.Name;
             }
-            if (pokemon.Types.Length > 1)
+            if (pokemon.Types.Count > 1)
             {
                 type2 = pokemon.Types[1].Type.Name;
             }

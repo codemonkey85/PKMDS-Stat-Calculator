@@ -1,4 +1,4 @@
-﻿using PokemonApiHelper;
+﻿using PokeApiNet;
 using System;
 using System.Threading.Tasks;
 
@@ -6,11 +6,14 @@ namespace PokemonApiTestApp
 {
     internal class Program
     {
+        private static readonly PokeApiClient pokeClient = new PokeApiClient();
+
         private static void Main(string[] args)
         {
             try
             {
-                GetThePokemon().Wait();
+                Pokemon pokemon = GetPokemon("ho-oh").Result;
+                Console.WriteLine(pokemon.Name);
             }
             catch (Exception ex)
             {
@@ -18,13 +21,9 @@ namespace PokemonApiTestApp
             }
         }
 
-        private static async Task GetThePokemon()
-        {
-            await foreach (string pokemon in PokeApiHelper.GetAllPokemonNames().GetAsyncEnumerator())
-            {
-                Console.WriteLine(pokemon);
-            }
-        }
+        private static async Task<Pokemon> GetPokemon(string identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
+
+        private static async Task<Pokemon> GetPokemon(int identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
 
         private static void LogError(Exception ex)
         {
