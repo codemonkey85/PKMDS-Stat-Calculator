@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PokemonApiHelper.Models.Pokemon
+namespace PokemonApiHelper.Models.Abilities
 {
     public class Ability
     {

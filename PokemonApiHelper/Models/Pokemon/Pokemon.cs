@@ -1,4 +1,6 @@
 ﻿using System.Text.Json.Serialization;
+using PokemonApiHelper.Models.Types;
+using PokemonApiHelper.Models.Utility;
 
 namespace PokemonApiHelper.Models.Pokemon
 {
@@ -22,14 +24,20 @@ namespace PokemonApiHelper.Models.Pokemon
             get; set;
         }
 
+        [JsonPropertyName("types")]
+        public Type Types
+        {
+            get; set;
+        }
+
         [JsonPropertyName("abilities")]
-        public Ability[] Abilities
+        public PokemonAbility[] Abilities
         {
             get; set;
         }
 
         [JsonPropertyName("forms")]
-        public PokemonForm[] Forms
+        public NamedApiResource<PokemonForm>[] Forms
         {
             get; set;
         }

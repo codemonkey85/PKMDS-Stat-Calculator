@@ -7,7 +7,7 @@ namespace PKMDS_Stat_Calculator.Pages
 {
     public partial class FetchData
     {
-        private IList<Pokemon> pokemonList = new List<Pokemon>();
+        private readonly IList<Pokemon> pokemonList = new List<Pokemon>();
 
         protected override async Task OnInitializedAsync()
         {

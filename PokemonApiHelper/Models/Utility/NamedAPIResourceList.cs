@@ -2,7 +2,7 @@
 
 namespace PokemonApiHelper.Models.Utility
 {
-    public class NamedApiResourceList
+    public class NamedApiResourceList<T>
     {
         [JsonPropertyName("count")]
         public int Count
@@ -23,7 +23,7 @@ namespace PokemonApiHelper.Models.Utility
         }
 
         [JsonPropertyName("results")]
-        public NamedApiResource[] Results
+        public NamedApiResource<T>[] Results
         {
             get; set;
         }

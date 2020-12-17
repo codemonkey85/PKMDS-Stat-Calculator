@@ -2,7 +2,7 @@
 
 namespace PokemonApiHelper.Models.Utility
 {
-    public class NamedApiResource
+    public class NamedApiResource<T>
     {
         [JsonPropertyName("name")]
         public string Name

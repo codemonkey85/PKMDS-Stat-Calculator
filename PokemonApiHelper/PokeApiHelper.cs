@@ -32,8 +32,8 @@ namespace PokemonApiHelper
             }
             urlBuilder.Query = queryString.ToString();
 
-            NamedApiResourceList resourceList = await HttpClient.GetFromJsonAsync<NamedApiResourceList>(urlBuilder.ToString());
-            foreach (NamedApiResource resource in resourceList.Results)
+            NamedApiResourceList<Pokemon> resourceList = await HttpClient.GetFromJsonAsync<NamedApiResourceList<Pokemon>>(urlBuilder.ToString());
+            foreach (NamedApiResource<Pokemon> resource in resourceList.Results)
             {
                 yield return await HttpClient.GetFromJsonAsync<Pokemon>(resource.Url);
             }
@@ -41,11 +41,13 @@ namespace PokemonApiHelper
 
         public static async IAsyncEnumerator<string> GetAllPokemonNames()
         {
-            NamedApiResourceList resourceList = await HttpClient.GetFromJsonAsync<NamedApiResourceList>(@$"{pokeApiUrl}pokemon?limit=-1");
-            foreach (NamedApiResource resource in resourceList.Results)
+            NamedApiResourceList<Pokemon> resourceList = await HttpClient.GetFromJsonAsync<NamedApiResourceList<Pokemon>>(@$"{pokeApiUrl}pokemon?limit=-1");
+            foreach (NamedApiResource<Pokemon> resource in resourceList.Results)
             {
                 yield return resource.Name;
             }
         }
+
+        public static async Task<T> GetApiResource<T>(NamedApiResource<T> namedApiResource) => await HttpClient.GetFromJsonAsync<T>(namedApiResource.Url);
     }
 }
