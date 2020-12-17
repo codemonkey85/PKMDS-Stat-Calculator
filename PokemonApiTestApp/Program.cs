@@ -1,5 +1,4 @@
 ﻿using PokemonApiHelper;
-using PokemonApiHelper.Models.Pokemon;
 using System;
 using System.Threading.Tasks;
 
@@ -21,7 +20,7 @@ namespace PokemonApiTestApp
 
         private static async Task GetThePokemon()
         {
-            await foreach (var pokemon in PokeApiHelper.GetAllPokemonNames().GetAsyncEnumerator())
+            await foreach (string pokemon in PokeApiHelper.GetAllPokemonNames().GetAsyncEnumerator())
             {
                 Console.WriteLine(pokemon);
             }

@@ -6,7 +6,11 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (!(pokemonNames?.Any() ?? false))
+@if (errorMessage != null)
+{
+    <label>@errorMessage</label>
+}
+else if (!(pokemonNames?.Any() ?? false))
 {
     <p><em>Loading...</em></p>
 }
@@ -28,6 +32,7 @@ else
                 @*<th></th>*@
                 <th>Id</th>
                 <th>Name</th>
+                <th>Type</th>
                 <th>HP</th>
                 <th>Attack</th>
                 <th>Defense</th>
@@ -43,6 +48,7 @@ else
                     @*<td><img src="@pokemon.Sprites.FrontDefault" /></td>*@
                     <td>@pokemon.Id.ToString()</td>
                     <td>@pokemon.Name</td>
+                    <td>@GetPokemonTypes(pokemon)</td>
                     <td>@pokemon.Stats[0].BaseStat</td>
                     <td>@pokemon.Stats[1].BaseStat</td>
                     <td>@pokemon.Stats[2].BaseStat</td>

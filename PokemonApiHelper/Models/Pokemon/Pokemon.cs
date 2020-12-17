@@ -1,6 +1,5 @@
-﻿using System.Text.Json.Serialization;
-using PokemonApiHelper.Models.Types;
-using PokemonApiHelper.Models.Utility;
+﻿using PokemonApiHelper.Models.Utility;
+using System.Text.Json.Serialization;
 
 namespace PokemonApiHelper.Models.Pokemon
 {
@@ -25,7 +24,7 @@ namespace PokemonApiHelper.Models.Pokemon
         }
 
         [JsonPropertyName("types")]
-        public Type Types
+        public PokemonType[] Types
         {
             get; set;
         }

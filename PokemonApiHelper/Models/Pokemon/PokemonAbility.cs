@@ -1,6 +1,6 @@
-﻿using System.Text.Json.Serialization;
-using PokemonApiHelper.Models.Abilities;
+﻿using PokemonApiHelper.Models.Abilities;
 using PokemonApiHelper.Models.Utility;
+using System.Text.Json.Serialization;
 
 namespace PokemonApiHelper.Models.Pokemon
 {
