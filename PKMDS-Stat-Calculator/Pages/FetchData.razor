@@ -6,7 +6,7 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (pokemon == null)
+@if (pokemonList == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -27,7 +27,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (Pokemon pokemon in pokemon)
+            @foreach (Pokemon pokemon in pokemonList)
             {
                 <tr>
                     <td><img src="@pokemon.Sprites.FrontDefault" /></td>

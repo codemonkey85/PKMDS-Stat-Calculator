@@ -7,16 +7,11 @@ namespace PokemonApiTestApp
 {
     internal class Program
     {
-        private static IList<Pokemon> pokemon = new List<Pokemon>();
-
-        private const string pokeApiUrl = @"https://pokeapi.co/api/v2/";
-
         private static void Main(string[] args)
         {
             try
             {
-                var test = GetThePokemon();
-                test.Wait();
+                GetThePokemon().Wait();
             }
             catch (Exception ex)
             {
@@ -26,9 +21,9 @@ namespace PokemonApiTestApp
 
         private static async Task GetThePokemon()
         {
-            await foreach (var item in PokemonApiHelper.PokeApiHelper.GetMultiplePokemon(100).GetAsyncEnumerator())
+            await foreach (Pokemon pokemon in PokemonApiHelper.PokeApiHelper.GetMultiplePokemon(100).GetAsyncEnumerator())
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine(pokemon.Name);
             }
         }
 

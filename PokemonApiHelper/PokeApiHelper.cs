@@ -23,7 +23,7 @@ namespace PokemonApiHelper
 
         public static async IAsyncEnumerator<Pokemon> GetMultiplePokemon(int limit = 0, int offset = 0)
         {
-            var pokemonList = new List<Pokemon>();
+            List<Pokemon> pokemonList = new List<Pokemon>();
             UriBuilder builder = new UriBuilder(@$"{pokeApiUrl}pokemon");
             NameValueCollection query = HttpUtility.ParseQueryString(builder.Query);
             if (limit > 0)
