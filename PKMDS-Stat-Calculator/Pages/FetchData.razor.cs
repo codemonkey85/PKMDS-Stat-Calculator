@@ -1,4 +1,5 @@
-﻿using PokeApiNet;
+﻿using PKMDS_Stat_Calculator.Models;
+using PokeApiNet;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace PKMDS_Stat_Calculator.Pages
 {
     public partial class FetchData
     {
-        private IList<Pokemon> pokemonList = new List<Pokemon>();
+        private IList<PokemonCalculated> pokemonList = new List<PokemonCalculated>();
 
         private IList<string> pokemonNames = new List<string>();
 
@@ -29,7 +30,9 @@ namespace PKMDS_Stat_Calculator.Pages
             {
                 if (!string.IsNullOrEmpty(selectedPokemon))
                 {
-                    pokemonList.Add(await PokeApiClient.GetResourceAsync<Pokemon>(selectedPokemon));
+                    PokemonCalculated pokemonCalculated = new PokemonCalculated();
+                    pokemonCalculated.Pokemon = await PokeApiClient.GetResourceAsync<Pokemon>(selectedPokemon);
+                    pokemonList.Add(pokemonCalculated);
                 }
             }
             catch (Exception ex)

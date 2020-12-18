@@ -2,6 +2,7 @@
 @inject HttpClient Http
 @inject PokeApiClient PokeApiClient
 @using PokeApiNet
+@using PKMDS_Stat_Calculator.Models
 
 <h1>Pokemon API Test</h1>
 
@@ -43,19 +44,19 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (Pokemon pokemon in pokemonList)
+            @foreach (PokemonCalculated pokemonCalculated in pokemonList)
             {
                 <tr>
-                    <td><img class="pokemon-sprite" src="@pokemon.Sprites.FrontDefault" /></td>
-                    <td>@pokemon.Id.ToString()</td>
-                    <td>@pokemon.Name</td>
-                    <td>@GetPokemonTypes(pokemon)</td>
-                    <td>@pokemon.Stats[0].BaseStat</td>
-                    <td>@pokemon.Stats[1].BaseStat</td>
-                    <td>@pokemon.Stats[2].BaseStat</td>
-                    <td>@pokemon.Stats[3].BaseStat</td>
-                    <td>@pokemon.Stats[4].BaseStat</td>
-                    <td>@pokemon.Stats[5].BaseStat</td>
+                    <td><img class="pokemon-sprite" src="@pokemonCalculated.Pokemon.Sprites.FrontDefault" /></td>
+                    <td>@pokemonCalculated.Pokemon.Id.ToString()</td>
+                    <td>@pokemonCalculated.Pokemon.Name</td>
+                    <td>@GetPokemonTypes(pokemonCalculated.Pokemon)</td>
+                    <td>@pokemonCalculated.Pokemon.Stats[0].BaseStat</td>
+                    <td>@pokemonCalculated.Pokemon.Stats[1].BaseStat</td>
+                    <td>@pokemonCalculated.Pokemon.Stats[2].BaseStat</td>
+                    <td>@pokemonCalculated.Pokemon.Stats[3].BaseStat</td>
+                    <td>@pokemonCalculated.Pokemon.Stats[4].BaseStat</td>
+                    <td>@pokemonCalculated.Pokemon.Stats[5].BaseStat</td>
                 </tr>
             }
         </tbody>
