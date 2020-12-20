@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using System;
+using Microsoft.AspNetCore.Components;
+using PKMDS_Stat_Calculator.Models;
 using PokeApiNet;
 
 namespace PKMDS_Stat_Calculator.Pages
@@ -6,9 +8,32 @@ namespace PKMDS_Stat_Calculator.Pages
     public partial class PokemonComponent
     {
         [Parameter]
-        public Pokemon Pokemon
+        public PokemonCalculated PokemonCalculated
         {
             get; set;
+        }
+
+        private static string GetPokemonTypes(Pokemon pokemon)
+        {
+            string type1 = string.Empty;
+            string type2 = string.Empty;
+            if (pokemon.Types.Count > 0)
+            {
+                type1 = pokemon.Types[0].Type.Name;
+            }
+            if (pokemon.Types.Count > 1)
+            {
+                type2 = pokemon.Types[1].Type.Name;
+            }
+
+            if (!string.IsNullOrEmpty(type2) && !string.Equals(type1, type2, StringComparison.OrdinalIgnoreCase))
+            {
+                return $@"{type1}/{type2}";
+            }
+            else
+            {
+                return $@"{type1}";
+            }
         }
     }
 }

@@ -28,37 +28,10 @@ else
 
     <button @onclick="@(async e => await ButtonClicked())">Get Stats</button>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>HP</th>
-                <th>Attack</th>
-                <th>Defense</th>
-                <th>Special Attack</th>
-                <th>Special Defense</th>
-                <th>Speed</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (PokemonCalculated pokemonCalculated in pokemonList)
-            {
-                <tr>
-                    <td><img class="pokemon-sprite" src="@pokemonCalculated.Pokemon.Sprites.FrontDefault" /></td>
-                    <td>@pokemonCalculated.Pokemon.Id.ToString()</td>
-                    <td>@pokemonCalculated.Pokemon.Name</td>
-                    <td>@GetPokemonTypes(pokemonCalculated.Pokemon)</td>
-                    <td>@pokemonCalculated.Pokemon.Stats[0].BaseStat</td>
-                    <td>@pokemonCalculated.Pokemon.Stats[1].BaseStat</td>
-                    <td>@pokemonCalculated.Pokemon.Stats[2].BaseStat</td>
-                    <td>@pokemonCalculated.Pokemon.Stats[3].BaseStat</td>
-                    <td>@pokemonCalculated.Pokemon.Stats[4].BaseStat</td>
-                    <td>@pokemonCalculated.Pokemon.Stats[5].BaseStat</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    @foreach (PokemonCalculated pokemonCalculated in pokemonList)
+    {
+        <p>
+            <PokemonComponent PokemonCalculated="@pokemonCalculated"></PokemonComponent>
+        </p>
+    }
 }

@@ -59,6 +59,8 @@ namespace PKMDS_Stat_Calculator.Models
             get; set;
         }
 
+        #region Stats
+
         public int HpIv
         {
             get; set;
@@ -123,6 +125,8 @@ namespace PKMDS_Stat_Calculator.Models
         {
             get; set;
         }
+
+        #endregion
 
         public int Hp => CalculateHpStat(Pokemon.Stats[0].BaseStat, HpIv, HpEv, Level);
 

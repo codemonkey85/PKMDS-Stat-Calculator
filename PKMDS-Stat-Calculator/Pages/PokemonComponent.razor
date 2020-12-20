@@ -1,4 +1,33 @@
-﻿@if (Pokemon != null)
+﻿@if (PokemonCalculated != null)
 {
-
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>HP</th>
+                <th>Attack</th>
+                <th>Defense</th>
+                <th>Special Attack</th>
+                <th>Special Defense</th>
+                <th>Speed</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><img class="pokemon-sprite" src="@PokemonCalculated.Pokemon.Sprites.FrontDefault" /></td>
+                <td>@PokemonCalculated.Pokemon.Id.ToString()</td>
+                <td>@PokemonCalculated.Pokemon.Name</td>
+                <td>@GetPokemonTypes(PokemonCalculated.Pokemon)</td>
+                <td>@PokemonCalculated.Pokemon.Stats[0].BaseStat</td>
+                <td>@PokemonCalculated.Pokemon.Stats[1].BaseStat</td>
+                <td>@PokemonCalculated.Pokemon.Stats[2].BaseStat</td>
+                <td>@PokemonCalculated.Pokemon.Stats[3].BaseStat</td>
+                <td>@PokemonCalculated.Pokemon.Stats[4].BaseStat</td>
+                <td>@PokemonCalculated.Pokemon.Stats[5].BaseStat</td>
+            </tr>
+        </tbody>
+    </table>
 }
