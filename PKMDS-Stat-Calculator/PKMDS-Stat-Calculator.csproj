@@ -1,22 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RazorLangVersion>3.0</RazorLangVersion>
-    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-    <RootNamespace>PKMDS_Stat_Calculator</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'PKMDS-Stat-Calculator' " />
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.1" PrivateAssets="all" />
-    <PackageReference Include="PokeApiNet" Version="3.0.0" />
-    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
-  </ItemGroup>
-
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RazorLangVersion>3.0</RazorLangVersion>
+        <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+        <RootNamespace>PKMDS_Stat_Calculator</RootNamespace>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(RunConfiguration)' == 'PKMDS-Stat-Calculator' " />
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.1" PrivateAssets="all" />
+        <PackageReference Include="PokeApiNet" Version="3.0.0" />
+        <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+    </ItemGroup>
 </Project>
