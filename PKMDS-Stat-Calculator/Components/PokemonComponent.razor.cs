@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using PKMDS_Stat_Calculator.Models;
 using PokeApiNet;
+using System;
 
-namespace PKMDS_Stat_Calculator.Pages
+namespace PKMDS_Stat_Calculator.Components
 {
     public partial class PokemonComponent
     {
