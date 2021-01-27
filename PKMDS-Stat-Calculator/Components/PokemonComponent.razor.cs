@@ -2,16 +2,18 @@
 using PKMDS_Stat_Calculator.Models;
 using PokeApiNet;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PKMDS_Stat_Calculator.Components
 {
     public partial class PokemonComponent
     {
         [Parameter]
-        public PokemonCalculated PokemonCalculated
+        public IList<PokemonCalculated> PokemonList
         {
             get; set;
-        }
+        } = new List<PokemonCalculated>();
 
         private static string GetPokemonTypes(Pokemon pokemon)
         {
@@ -34,6 +36,12 @@ namespace PKMDS_Stat_Calculator.Components
             {
                 return $@"{type1}";
             }
+        }
+
+        protected async Task RemoveRow(PokemonCalculated pokemon)
+        {
+            PokemonList.Remove(pokemon);
+            StateHasChanged();
         }
     }
 }

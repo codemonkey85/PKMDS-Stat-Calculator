@@ -1,9 +1,11 @@
-﻿@if (PokemonCalculated != null)
+﻿@using PKMDS_Stat_Calculator.Models
+
+@if (PokemonList != null)
 {
     <table class="table">
         <thead>
             <tr>
-                <th></th>
+                @*<th></th>*@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Type</th>
@@ -13,21 +15,26 @@
                 <th>Special Attack</th>
                 <th>Special Defense</th>
                 <th>Speed</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><img class="pokemon-sprite" src="@PokemonCalculated.Pokemon.Sprites.FrontDefault" /></td>
-                <td>@PokemonCalculated.Pokemon.Id.ToString()</td>
-                <td>@PokemonCalculated.Pokemon.Name</td>
-                <td>@GetPokemonTypes(PokemonCalculated.Pokemon)</td>
-                <td>@PokemonCalculated.Pokemon.Stats[0].BaseStat</td>
-                <td>@PokemonCalculated.Pokemon.Stats[1].BaseStat</td>
-                <td>@PokemonCalculated.Pokemon.Stats[2].BaseStat</td>
-                <td>@PokemonCalculated.Pokemon.Stats[3].BaseStat</td>
-                <td>@PokemonCalculated.Pokemon.Stats[4].BaseStat</td>
-                <td>@PokemonCalculated.Pokemon.Stats[5].BaseStat</td>
-            </tr>
+            @foreach (PokemonCalculated pokemon in PokemonList)
+            {
+                <tr>
+                    @*<td><img class="pokemon-sprite" src="@pokemon.Pokemon.Sprites.FrontDefault" /></td>*@
+                    <td>@pokemon.Pokemon.Id.ToString()</td>
+                    <td>@pokemon.Pokemon.Name</td>
+                    <td>@GetPokemonTypes(pokemon.Pokemon)</td>
+                    <td>@pokemon.Pokemon.Stats[0].BaseStat</td>
+                    <td>@pokemon.Pokemon.Stats[1].BaseStat</td>
+                    <td>@pokemon.Pokemon.Stats[2].BaseStat</td>
+                    <td>@pokemon.Pokemon.Stats[3].BaseStat</td>
+                    <td>@pokemon.Pokemon.Stats[4].BaseStat</td>
+                    <td>@pokemon.Pokemon.Stats[5].BaseStat</td>
+                    <td><button class="btn-danger delete-button" @onclick="@(async e => { await RemoveRow(pokemon); })">🗙</button></td>
+                </tr>
+            }
         </tbody>
     </table>
 }

@@ -26,13 +26,7 @@ else
             <option value="@pokemonName">@pokemonName</option>
         }
     </select>
-
     <button @onclick="@(async e => await ButtonClicked())">Get Stats</button>
-
-    @foreach (PokemonCalculated pokemonCalculated in pokemonList)
-    {
-        <p>
-            <PokemonComponent PokemonCalculated="@pokemonCalculated"></PokemonComponent>
-        </p>
-    }
+    <label>Showing stats for @(pokemonList?.Count ?? 0) Pokemon.</label>
+    <PokemonComponent PokemonList="@pokemonList"></PokemonComponent>
 }
