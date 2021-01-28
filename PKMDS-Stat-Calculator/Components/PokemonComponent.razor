@@ -5,16 +5,19 @@
     <table class="table">
         <thead>
             <tr>
-                @*<th></th>*@
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>HP</th>
-                <th>Attack</th>
-                <th>Defense</th>
-                <th>Special Attack</th>
-                <th>Special Defense</th>
-                <th>Speed</th>
+                @if (showSprite)
+                {
+                    <th></th>
+                }
+                <th @onclick="SortId">Id @(GetArrowString(sortIdDesc))</th>
+                <th @onclick="SortName">Name @(GetArrowString(sortNameDesc))</th>
+                <th @onclick="SortType">Type @(GetArrowString(sortTypeDesc))</th>
+                <th @onclick="SortHp">HP @(GetArrowString(sortHpDesc))</th>
+                <th @onclick="SortAttack">Attack @(GetArrowString(sortAttackDesc))</th>
+                <th @onclick="SortDefense">Defense @(GetArrowString(sortDefenseDesc))</th>
+                <th @onclick="SortSpecialAttack">Special Attack @(GetArrowString(sortSpecialAttackDesc))</th>
+                <th @onclick="SortSpecialDefense">Special Defense @(GetArrowString(sortSpecialDefenseDesc))</th>
+                <th @onclick="Speed">Speed @(GetArrowString(sortSpeedDesc))</th>
                 <th></th>
             </tr>
         </thead>
@@ -22,7 +25,10 @@
             @foreach (PokemonCalculated pokemon in PokemonList)
             {
                 <tr>
-                    @*<td><img class="pokemon-sprite" src="@pokemon.Pokemon.Sprites.FrontDefault" /></td>*@
+                    @if (showSprite)
+                    {
+                        <td><img class="pokemon-sprite" src="@pokemon.Pokemon.Sprites.FrontDefault" /></td>
+                    }
                     <td>@pokemon.Pokemon.Id.ToString()</td>
                     <td>@pokemon.Pokemon.Name</td>
                     <td>@GetPokemonTypes(pokemon.Pokemon)</td>
@@ -32,7 +38,7 @@
                     <td>@pokemon.Pokemon.Stats[3].BaseStat</td>
                     <td>@pokemon.Pokemon.Stats[4].BaseStat</td>
                     <td>@pokemon.Pokemon.Stats[5].BaseStat</td>
-                    <td><button class="btn-danger delete-button" @onclick="@(async e => { await RemoveRow(pokemon); })">🗙</button></td>
+                    <td><button class="btn-danger delete-button" @onclick="@(() => RemoveRow(pokemon))">X</button></td>
                 </tr>
             }
         </tbody>
