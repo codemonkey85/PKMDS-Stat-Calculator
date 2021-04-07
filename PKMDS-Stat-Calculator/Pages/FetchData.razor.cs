@@ -30,7 +30,7 @@ namespace PKMDS_Stat_Calculator.Pages
             {
                 if (!string.IsNullOrEmpty(selectedPokemon))
                 {
-                    PokemonCalculated pokemonCalculated = new PokemonCalculated
+                    PokemonCalculated pokemonCalculated = new()
                     {
                         Pokemon = await PokeApiClient.GetResourceAsync<Pokemon>(selectedPokemon)
                     };

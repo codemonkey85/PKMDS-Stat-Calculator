@@ -6,7 +6,7 @@ namespace PokemonApiTestApp
 {
     internal class Program
     {
-        private static readonly PokeApiClient pokeClient = new PokeApiClient();
+        private static readonly PokeApiClient pokeClient = new();
 
         private static void Main(string[] args)
         {

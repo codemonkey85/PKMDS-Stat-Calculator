@@ -4,10 +4,6 @@ namespace PKMDS_Stat_Calculator.Shared
 {
     public partial class SurveyPrompt
     {
-        [Parameter]
-        public string Title
-        {
-            get; set;
-        }
+        [Parameter] public string Title { get; set; }
     }
 }
