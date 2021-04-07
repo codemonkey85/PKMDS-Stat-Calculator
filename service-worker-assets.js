@@ -105,15 +105,15 @@
       "url": "PKMDS-Stat-Calculator.styles.css"
     },
     {
-      "hash": "sha256-d8vt7By79QN+UPmyDGW5t0jqlXOtgO8ojae14FlqZeE=",
+      "hash": "sha256-Dq\/lAzv6qdneBAPARy51pJ2TUr5c01H84RgKBAEEWHs=",
       "url": "_framework\/Microsoft.AspNetCore.Components.dll"
     },
     {
-      "hash": "sha256-AEgECgkmZ6\/ERm\/r3uf5Owsco6wJzMU4FDk9i9Mag4k=",
+      "hash": "sha256-ZnfLdq4O3TgLp0Kg\/a05seWzoGn6Nm+3sEeZ90CStv4=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.dll"
     },
     {
-      "hash": "sha256-n6gi1Fxvm\/iC+GtgAO7wmPJOixVkYEHsfvUfrq7Uk2w=",
+      "hash": "sha256-WWIuUjsnjvkrWbop5SFKSAmQvV98QMDq3lGZBVNVeFY=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
@@ -161,11 +161,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.dll"
     },
     {
-      "hash": "sha256-N4XAFLJVt3+GYIxtLACFnW1EsfpwbFGztm6A4fVsCKw=",
+      "hash": "sha256-LdDuq+S0QOvo7ABGCoI9IIwv59fM0MYdUbbZ\/DKu7pk=",
       "url": "_framework\/Microsoft.JSInterop.dll"
     },
     {
-      "hash": "sha256-LkNprID5vhUSogSnLuIsAzYQL4dtKGSGQSGrlWJ+Kos=",
+      "hash": "sha256-BAtOvcFEyZD9Ri0p2J3817Dix5MZpPSaQ8WRLE3FRKM=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
@@ -181,7 +181,7 @@
       "url": "_framework\/System.IO.Pipelines.dll"
     },
     {
-      "hash": "sha256-LFFXBG71ctzcvFn4q1YhyfhSEBssHRXSB51divwbvsY=",
+      "hash": "sha256-LOF6+u3Qck+6do8dRwfnS2WUBCu7Tl+igthk5JhT5\/s=",
       "url": "_framework\/PKMDS-Stat-Calculator.dll"
     },
     {
@@ -321,13 +321,13 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-iXnrgLr8UgfWA44LguLyKPjm068jvrokYQYV33KlUL8=",
+      "hash": "sha256-ISdsufblxkJKSndV1LYGL7FatOPO0yyp+cRkVRinIWs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-sYA0L2visb01XnqGT7epPVSXTZJFhpQ4PMDzhF\/rngo=",
+      "hash": "sha256-dl8FVRvWOJfOtzIC\/x66QNnBNsT9cAOMrn22GB8fJ8U=",
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "j6TAlnXv"
+  "version": "i42y0RM9"
 };
