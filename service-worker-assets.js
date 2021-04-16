@@ -173,7 +173,7 @@
       "url": "_framework\/Newtonsoft.Json.dll"
     },
     {
-      "hash": "sha256-yUWmRO6dsmmFf8LniM5SuQxEAjDp0KMstLp5GUYItkg=",
+      "hash": "sha256-p62MwkffkIT0EM4Wt2jOcDUS6lb2NY2Ei85q6l7krAs=",
       "url": "_framework\/PokeApiNet.dll"
     },
     {
@@ -181,7 +181,7 @@
       "url": "_framework\/System.IO.Pipelines.dll"
     },
     {
-      "hash": "sha256-LOF6+u3Qck+6do8dRwfnS2WUBCu7Tl+igthk5JhT5\/s=",
+      "hash": "sha256-3MheFRPH9iwbK+t+ascQMLvuCL1+Y00nYlYmaqFVo2o=",
       "url": "_framework\/PKMDS-Stat-Calculator.dll"
     },
     {
@@ -321,7 +321,7 @@
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
-      "hash": "sha256-ISdsufblxkJKSndV1LYGL7FatOPO0yyp+cRkVRinIWs=",
+      "hash": "sha256-NrLJhrIQqE3hx8mFOSVIMimRiXN0GhTUAiHD3yebn\/Q=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -329,5 +329,5 @@
       "url": "_framework\/blazor.webassembly.js"
     }
   ],
-  "version": "i42y0RM9"
+  "version": "lFWUOVb9"
 };
