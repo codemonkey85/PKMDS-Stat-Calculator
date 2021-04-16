@@ -5,11 +5,13 @@
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <RootNamespace>PKMDS_Stat_Calculator</RootNamespace>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(RunConfiguration)' == 'PKMDS-Stat-Calculator' " />
+    <PropertyGroup Condition=" '$(RunConfiguration)' == 'PKMDS-Stat-Calculator' ">
+      <ExternalConsole>true</ExternalConsole>
+    </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.5" />
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.5" PrivateAssets="all" />
-        <PackageReference Include="PokeApiNet" Version="3.0.0" />
+        <PackageReference Include="PokeApiNet" Version="3.0.1" />
         <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     </ItemGroup>
     <ItemGroup>
