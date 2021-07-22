@@ -1,6 +1,10 @@
 /* /Components/PokemonComponent.razor.rz.scp.css */
 .delete-button[b-sxu51oiasi] {
 }
+
+img.pokemon-sprite[b-sxu51oiasi] {
+    max-width: 75%;
+}
 /* /Components/ThemeToggleButton.razor.rz.scp.css */
 .theme-toggle[b-7654ro3c42] {
 }
