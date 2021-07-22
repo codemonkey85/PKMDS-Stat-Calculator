@@ -1,2 +1,6 @@
 ﻿.delete-button {
 }
+
+img.pokemon-sprite {
+    max-width: 75%;
+}

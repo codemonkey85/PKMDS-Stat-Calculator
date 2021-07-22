@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using PKMDS_Stat_Calculator.Shared;
 using PokeApiNet;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using PKMDS_Stat_Calculator.Shared;
 
 namespace PKMDS_Stat_Calculator
 {

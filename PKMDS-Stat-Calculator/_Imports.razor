@@ -7,3 +7,12 @@
 @using Microsoft.JSInterop
 @using PKMDS_Stat_Calculator
 @using PKMDS_Stat_Calculator.Shared
+@using PokeApiNet
+@using PKMDS_Stat_Calculator.Components
+@using PKMDS_Stat_Calculator.Models
+
+@inject IJSRuntime JSRuntime
+@inject IRefreshService RefreshService
+@inject IThemeService ThemeService
+@inject HttpClient Http
+@inject PokeApiClient PokeApiClient

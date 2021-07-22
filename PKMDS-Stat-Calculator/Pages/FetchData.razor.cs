@@ -1,4 +1,5 @@
-﻿using PKMDS_Stat_Calculator.Models;
+﻿using Microsoft.AspNetCore.Components;
+using PKMDS_Stat_Calculator.Models;
 using PokeApiNet;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PKMDS_Stat_Calculator.Pages
 {
+    [Route("/")]
     public partial class FetchData
     {
         private IList<PokemonCalculated> pokemonList = new List<PokemonCalculated>();
