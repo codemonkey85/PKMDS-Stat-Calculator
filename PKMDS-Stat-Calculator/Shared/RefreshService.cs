@@ -1,11 +1,8 @@
-﻿using System;
+﻿namespace PKMDS_Stat_Calculator.Shared;
 
-namespace PKMDS_Stat_Calculator.Shared
+public class RefreshService : IRefreshService
 {
-    public class RefreshService : IRefreshService
-    {
-        public event Action RefreshRequested;
+    public event Action RefreshRequested;
 
-        public void CallRequestRefresh() => RefreshRequested?.Invoke();
-    }
+    public void CallRequestRefresh() => RefreshRequested?.Invoke();
 }

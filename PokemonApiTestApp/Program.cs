@@ -1,37 +1,34 @@
 ﻿using PokeApiNet;
-using System;
-using System.Threading.Tasks;
 
-namespace PokemonApiTestApp
+namespace PokemonApiTestApp;
+
+internal class Program
 {
-    internal class Program
+    private static readonly PokeApiClient pokeClient = new();
+
+    private static void Main(string[] args)
     {
-        private static readonly PokeApiClient pokeClient = new();
-
-        private static void Main(string[] args)
+        try
         {
-            try
-            {
-                Pokemon pokemon = GetPokemon("ho-oh").Result;
-                Console.WriteLine(pokemon.Name);
-            }
-            catch (Exception ex)
-            {
-                LogError(ex);
-            }
+            Pokemon pokemon = GetPokemon("ho-oh").Result;
+            Console.WriteLine(pokemon.Name);
         }
-
-        private static async Task<Pokemon> GetPokemon(string identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
-
-        private static async Task<Pokemon> GetPokemon(int identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
-
-        private static void LogError(Exception ex)
+        catch (Exception ex)
         {
-            Console.WriteLine($"{ex.Message}{Environment.NewLine}{ex.StackTrace}");
-            if (ex.InnerException != null)
-            {
-                LogError(ex.InnerException);
-            }
+            LogError(ex);
+        }
+    }
+
+    private static async Task<Pokemon> GetPokemon(string identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
+
+    private static async Task<Pokemon> GetPokemon(int identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
+
+    private static void LogError(Exception ex)
+    {
+        Console.WriteLine($"{ex.Message}{Environment.NewLine}{ex.StackTrace}");
+        if (ex.InnerException != null)
+        {
+            LogError(ex.InnerException);
         }
     }
 }
