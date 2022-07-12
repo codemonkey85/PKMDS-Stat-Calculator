@@ -7,6 +7,6 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="PokeApiNet" Version="3.0.4" />
+        <PackageReference Include="PokeApiNet" Version="3.0.5" />
     </ItemGroup>
 </Project>
