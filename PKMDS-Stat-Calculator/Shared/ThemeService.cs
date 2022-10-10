@@ -4,28 +4,28 @@ namespace PKMDS_Stat_Calculator.Shared;
 
 public class ThemeService : IThemeService
 {
-    private bool isDarkTheme = false;
-    private const string isDarkThemeKey = @"isDarkTheme";
+    private bool _isDarkTheme;
+    private const string IsDarkThemeKey = @"isDarkTheme";
 
     public async Task ReadThemeFromLocalStorage(IJSRuntime jSRuntime) =>
-        isDarkTheme = int.Parse(await jSRuntime.ReadFromLocalStorage(isDarkThemeKey, "0")) == 1;
+        _isDarkTheme = int.Parse(await jSRuntime.ReadFromLocalStorage(IsDarkThemeKey, "0")) == 1;
 
     public async Task WriteThemeToLocalStorage(IJSRuntime jSRuntime) =>
-        await jSRuntime.AddToLocalStorage(isDarkThemeKey, isDarkTheme ? 1 : 0);
+        await jSRuntime.AddToLocalStorage(IsDarkThemeKey, _isDarkTheme ? 1 : 0);
 
     public async Task SetTheme(IJSRuntime jSRuntime, IRefreshService refreshService, bool isDark)
     {
-        isDarkTheme = isDark;
+        _isDarkTheme = isDark;
         await WriteThemeToLocalStorage(jSRuntime);
         await ApplyTheme(jSRuntime, refreshService);
     }
 
     public async Task ApplyTheme(IJSRuntime jSRuntime, IRefreshService refreshService)
     {
-        await jSRuntime.ChangeTheme(isDarkTheme);
+        await jSRuntime.ChangeTheme(_isDarkTheme);
         refreshService.CallRequestRefresh();
     }
 
     public async Task SwitchTheme(IJSRuntime jSRuntime, IRefreshService refreshService) =>
-        await SetTheme(jSRuntime, refreshService, !isDarkTheme);
+        await SetTheme(jSRuntime, refreshService, !_isDarkTheme);
 }

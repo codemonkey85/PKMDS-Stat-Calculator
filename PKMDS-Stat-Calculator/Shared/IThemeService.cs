@@ -8,9 +8,9 @@ public interface IThemeService
 
     Task WriteThemeToLocalStorage(IJSRuntime jSRuntime);
 
-    Task SetTheme(IJSRuntime JSRuntime, IRefreshService RefreshService, bool isDark);
+    Task SetTheme(IJSRuntime jsRuntime, IRefreshService refreshService, bool isDark);
 
     Task ApplyTheme(IJSRuntime jSRuntime, IRefreshService refreshService);
 
-    Task SwitchTheme(IJSRuntime JSRuntime, IRefreshService RefreshService);
+    Task SwitchTheme(IJSRuntime jsRuntime, IRefreshService refreshService);
 }

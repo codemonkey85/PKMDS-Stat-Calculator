@@ -1,23 +1,18 @@
-﻿using Microsoft.AspNetCore.Components;
-using PKMDS_Stat_Calculator.Models;
-using PokeApiNet;
-using System.Text;
-
-namespace PKMDS_Stat_Calculator.Pages;
+﻿namespace PKMDS_Stat_Calculator.Pages;
 
 [Route("/")]
 public partial class FetchData
 {
-    private IList<PokemonCalculated> pokemonList = new List<PokemonCalculated>();
+    private readonly IList<PokemonCalculated> _pokemonList = new List<PokemonCalculated>();
 
-    private IList<string> pokemonNames = new List<string>();
+    private IList<string> _pokemonNames = new List<string>();
 
-    private string selectedPokemon = string.Empty;
+    private string _selectedPokemon = string.Empty;
 
-    private string errorMessage = null;
+    private string? _errorMessage;
 
     protected override async Task OnInitializedAsync() =>
-        pokemonNames = (await PokeApiClient.GetNamedResourcePageAsync<Pokemon>(-1, 0)).Results
+        _pokemonNames = (await PokeApiClient.GetNamedResourcePageAsync<Pokemon>(-1, 0)).Results
             .Select(pokemon => pokemon.Name)
             .OrderBy(name => name)
             .ToList();
@@ -26,13 +21,13 @@ public partial class FetchData
     {
         try
         {
-            if (!string.IsNullOrEmpty(selectedPokemon))
+            if (!string.IsNullOrEmpty(_selectedPokemon))
             {
                 PokemonCalculated pokemonCalculated = new()
                 {
-                    Pokemon = await PokeApiClient.GetResourceAsync<Pokemon>(selectedPokemon)
+                    Pokemon = await PokeApiClient.GetResourceAsync<Pokemon>(_selectedPokemon)
                 };
-                pokemonList.Add(pokemonCalculated);
+                _pokemonList.Add(pokemonCalculated);
             }
         }
         catch (Exception ex)
@@ -43,9 +38,9 @@ public partial class FetchData
 
     private void OnError(Exception ex)
     {
-        StringBuilder errorMessageBuilder = new StringBuilder();
+        var errorMessageBuilder = new StringBuilder();
         BuildErrorMessage(errorMessageBuilder, ex);
-        errorMessage = errorMessageBuilder.ToString();
+        _errorMessage = errorMessageBuilder.ToString();
     }
 
     private void BuildErrorMessage(StringBuilder errorMessageBuilder, Exception ex)

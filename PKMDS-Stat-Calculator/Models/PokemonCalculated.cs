@@ -1,10 +1,8 @@
-﻿using PokeApiNet;
-
-namespace PKMDS_Stat_Calculator.Models;
+﻿namespace PKMDS_Stat_Calculator.Models;
 
 public class PokemonCalculated
 {
-    private enum Stats : int
+    private enum Stats
     {
         Hp = 1,
         Attack,
@@ -23,21 +21,26 @@ public class PokemonCalculated
     private double GetNatureModifier(Stats stat) =>
         stat switch
         {
-            _ when string.Equals(Nature.IncreasedStat.Name, Nature.DecreasedStat.Name, StringComparison.OrdinalIgnoreCase) => 1D,
-            Stats s when string.Equals(Nature.IncreasedStat.Name, s.ToString(), StringComparison.OrdinalIgnoreCase) => 1.1D,
-            Stats s when string.Equals(Nature.DecreasedStat.Name, s.ToString(), StringComparison.OrdinalIgnoreCase) => 0.9D,
+            _ when string.Equals(Nature.IncreasedStat.Name, Nature.DecreasedStat.Name,
+                StringComparison.OrdinalIgnoreCase) => 1D,
+            var s when string.Equals(Nature.IncreasedStat.Name, s.ToString(), StringComparison.OrdinalIgnoreCase) =>
+                1.1D,
+            var s when string.Equals(Nature.DecreasedStat.Name, s.ToString(), StringComparison.OrdinalIgnoreCase) =>
+                0.9D,
             _ => 1D,
         };
 
     public Pokemon Pokemon
     {
-        get; set;
-    }
+        get;
+        set;
+    } = new();
 
     public Nature Nature
     {
-        get; set;
-    }
+        get;
+        set;
+    } = new();
 
     #region Stats
 

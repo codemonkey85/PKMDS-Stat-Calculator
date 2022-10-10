@@ -1,34 +1,31 @@
 ﻿using PokeApiNet;
 
-namespace PokemonApiTestApp;
+PokeApiClient pokeClient = new();
 
-internal class Program
+try
 {
-    private static readonly PokeApiClient pokeClient = new();
+    var pokemon = GetPokemon("ho-oh").Result;
+    Console.WriteLine(pokemon.Name);
+}
+catch (Exception ex)
+{
+    LogError(ex);
+}
 
-    private static void Main(string[] args)
-    {
-        try
-        {
-            Pokemon pokemon = GetPokemon("ho-oh").Result;
-            Console.WriteLine(pokemon.Name);
-        }
-        catch (Exception ex)
-        {
-            LogError(ex);
-        }
-    }
+async Task<Pokemon> GetPokemon(string identifier) =>
+    await pokeClient.GetResourceAsync<Pokemon>(identifier);
 
-    private static async Task<Pokemon> GetPokemon(string identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
-
-    private static async Task<Pokemon> GetPokemon(int identifier) => await pokeClient.GetResourceAsync<Pokemon>(identifier);
-
-    private static void LogError(Exception ex)
+void LogError(Exception ex)
+{
+    while (true)
     {
         Console.WriteLine($"{ex.Message}{Environment.NewLine}{ex.StackTrace}");
         if (ex.InnerException != null)
         {
-            LogError(ex.InnerException);
+            ex = ex.InnerException;
+            continue;
         }
+
+        break;
     }
 }

@@ -1,23 +1,23 @@
 <h1>Pokemon API Test</h1>
 
-@if (errorMessage != null)
+@if (_errorMessage is not null)
 {
-    <label>@errorMessage</label>
+    <label>@_errorMessage</label>
 }
-else if (!(pokemonNames?.Any() ?? false))
+else if (!_pokemonNames.Any())
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <select @bind="selectedPokemon">
+    <select @bind="_selectedPokemon">
         <option value=@string.Empty>(Select)</option>
-        @foreach (string pokemonName in pokemonNames)
+        @foreach (var pokemonName in _pokemonNames)
         {
             <option value="@pokemonName">@pokemonName</option>
         }
     </select>
-    <button @onclick="@(async e => await ButtonClicked())">Get Stats</button>
-    <label>Showing stats for @(pokemonList?.Count ?? 0) Pokemon.</label>
-    <PokemonComponent PokemonList="@pokemonList"></PokemonComponent>
+    <button @onclick="@(async _ => await ButtonClicked())">Get Stats</button>
+    <label>Showing stats for @(_pokemonList.Count) Pokemon.</label>
+    <PokemonComponent PokemonList="@_pokemonList"></PokemonComponent>
 }
