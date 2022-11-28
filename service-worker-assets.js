@@ -33,7 +33,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-5CAJ1irdh1ko9alrcHm81ZNAoE+vStTB25rfpkEUi58=",
+      "hash": "sha256-wNxaMhmJXlOUONKNqCfrZ8cCyoTuImgOu1Le45sGPqY=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -113,7 +113,7 @@
       "url": "_framework\/Newtonsoft.Json.dll"
     },
     {
-      "hash": "sha256-2KyzhyPseL2DJqht2xWysPM6EXDleIaO0jBrAvenGuc=",
+      "hash": "sha256-ZNuFwxifqZB7i9X2\/dt91DgaIgJzTkeXxVBx6A5onUI=",
       "url": "_framework\/PKMDS-Stat-Calculator.dll"
     },
     {
@@ -333,5 +333,5 @@
       "url": "sample-data\/weather.json"
     }
   ],
-  "version": "aoKA9IIB"
+  "version": "hNE8VGXq"
 };
