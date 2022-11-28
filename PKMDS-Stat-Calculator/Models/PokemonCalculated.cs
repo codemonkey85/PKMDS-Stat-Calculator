@@ -36,7 +36,7 @@ public class PokemonCalculated
         set;
     } = new();
 
-    public Nature Nature
+    private PokeApiNet.Nature Nature
     {
         get;
         set;
@@ -44,67 +44,67 @@ public class PokemonCalculated
 
     #region Stats
 
-    public int HpIv
+    private int HpIv
     {
         get; set;
     }
 
-    public int AttackIv
+    private int AttackIv
     {
         get; set;
     }
 
-    public int DefenseIv
+    private int DefenseIv
     {
         get; set;
     }
 
-    public int SpecialAttackIv
+    private int SpecialAttackIv
     {
         get; set;
     }
 
-    public int SpecialDefenseIv
+    private int SpecialDefenseIv
     {
         get; set;
     }
 
-    public int SpeedIv
+    private int SpeedIv
     {
         get; set;
     }
 
-    public int HpEv
+    private int HpEv
     {
         get; set;
     }
 
-    public int AttackEv
+    private int AttackEv
     {
         get; set;
     }
 
-    public int DefenseEv
+    private int DefenseEv
     {
         get; set;
     }
 
-    public int SpecialAttackEv
+    private int SpecialAttackEv
     {
         get; set;
     }
 
-    public int SpecialDefenseEv
+    private int SpecialDefenseEv
     {
         get; set;
     }
 
-    public int SpeedEv
+    private int SpeedEv
     {
         get; set;
     }
 
-    public int Level
+    private int Level
     {
         get; set;
     }

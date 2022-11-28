@@ -1,6 +1,4 @@
-﻿using Microsoft.JSInterop;
-
-namespace PKMDS_Stat_Calculator.Shared;
+﻿namespace PKMDS_Stat_Calculator.Shared;
 
 public static class SharedFunctions
 {

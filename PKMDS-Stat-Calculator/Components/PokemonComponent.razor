@@ -1,6 +1,6 @@
 ﻿<br />
 <label for="chkShowSprite">Show Sprite</label>
-<input id="chkShowSprite" type="checkbox" @bind=ShowSprite />
+<input id="chkShowSprite" type="checkbox" @bind=showSprite />
 <br />
 
 @if (PokemonList is not null)
@@ -8,19 +8,19 @@
     <table class="table">
         <thead>
             <tr>
-                @if (ShowSprite)
+                @if (showSprite)
                 {
                     <th></th>
                 }
-                <th @onclick="SortId">Id @(GetArrowString(_sortIdDesc))</th>
-                <th @onclick="SortName">Name @(GetArrowString(_sortNameDesc))</th>
-                <th @onclick="SortType">Type @(GetArrowString(_sortTypeDesc))</th>
-                <th @onclick="SortHp">HP @(GetArrowString(_sortHpDesc))</th>
-                <th @onclick="SortAttack">Attack @(GetArrowString(_sortAttackDesc))</th>
-                <th @onclick="SortDefense">Defense @(GetArrowString(_sortDefenseDesc))</th>
-                <th @onclick="SortSpecialAttack">Special Attack @(GetArrowString(_sortSpecialAttackDesc))</th>
-                <th @onclick="SortSpecialDefense">Special Defense @(GetArrowString(_sortSpecialDefenseDesc))</th>
-                <th @onclick="Speed">Speed @(GetArrowString(_sortSpeedDesc))</th>
+                <th @onclick="SortId">Id @(GetArrowString(sortIdDesc))</th>
+                <th @onclick="SortName">Name @(GetArrowString(sortNameDesc))</th>
+                <th @onclick="SortType">Type @(GetArrowString(sortTypeDesc))</th>
+                <th @onclick="SortHp">HP @(GetArrowString(sortHpDesc))</th>
+                <th @onclick="SortAttack">Attack @(GetArrowString(sortAttackDesc))</th>
+                <th @onclick="SortDefense">Defense @(GetArrowString(sortDefenseDesc))</th>
+                <th @onclick="SortSpecialAttack">Special Attack @(GetArrowString(sortSpecialAttackDesc))</th>
+                <th @onclick="SortSpecialDefense">Special Defense @(GetArrowString(sortSpecialDefenseDesc))</th>
+                <th @onclick="Speed">Speed @(GetArrowString(sortSpeedDesc))</th>
                 <th></th>
             </tr>
         </thead>
@@ -28,7 +28,7 @@
             @foreach (var pokemon in PokemonList)
             {
                 <tr>
-                    @if (ShowSprite)
+                    @if (showSprite)
                     {
                         <td>
                             <img class="pokemon-sprite" src="@pokemon.Pokemon.Sprites.FrontDefault" alt="" />

@@ -9,7 +9,7 @@ public partial class PokemonComponent
         set;
     } = new List<PokemonCalculated>();
 
-    protected bool ShowSprite = false;
+    private bool showSprite;
 
     private static string GetPokemonTypes(Pokemon pokemon)
     {
@@ -29,95 +29,95 @@ public partial class PokemonComponent
             : $@"{type1}";
     }
 
-    protected void RemoveRow(PokemonCalculated pokemon)
+    private void RemoveRow(PokemonCalculated pokemon)
     {
         PokemonList?.Remove(pokemon);
         StateHasChanged();
     }
 
-    private bool? _sortIdDesc = null;
-    private bool? _sortNameDesc = null;
-    private bool? _sortTypeDesc = null;
-    private bool? _sortHpDesc = null;
-    private bool? _sortAttackDesc = null;
-    private bool? _sortDefenseDesc = null;
-    private bool? _sortSpecialAttackDesc = null;
-    private bool? _sortSpecialDefenseDesc = null;
-    private bool? _sortSpeedDesc = null;
+    private bool? sortIdDesc;
+    private bool? sortNameDesc;
+    private bool? sortTypeDesc;
+    private bool? sortHpDesc;
+    private bool? sortAttackDesc;
+    private bool? sortDefenseDesc;
+    private bool? sortSpecialAttackDesc;
+    private bool? sortSpecialDefenseDesc;
+    private bool? sortSpeedDesc;
 
-    protected void SortId()
+    private void SortId()
     {
-        PokemonList = _sortIdDesc ?? false
+        PokemonList = sortIdDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Id).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Id).ToList();
-        _sortIdDesc = !(_sortIdDesc ?? false);
+        sortIdDesc = !(sortIdDesc ?? false);
     }
 
-    protected void SortName()
+    private void SortName()
     {
-        PokemonList = _sortNameDesc ?? false
+        PokemonList = sortNameDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Name).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Name).ToList();
-        _sortNameDesc = !(_sortNameDesc ?? false);
+        sortNameDesc = !(sortNameDesc ?? false);
     }
 
-    protected void SortType()
+    private void SortType()
     {
-        PokemonList = _sortTypeDesc ?? false
+        PokemonList = sortTypeDesc ?? false
             ? PokemonList?.OrderByDescending(p => GetPokemonTypes(p.Pokemon))
                 .ThenByDescending(p => GetPokemonTypes(p.Pokemon)).ToList()
             : PokemonList?.OrderBy(p => GetPokemonTypes(p.Pokemon)).ThenBy(p => GetPokemonTypes(p.Pokemon)).ToList();
-        _sortTypeDesc = !(_sortTypeDesc ?? false);
+        sortTypeDesc = !(sortTypeDesc ?? false);
     }
 
-    protected void SortHp()
+    private void SortHp()
     {
-        PokemonList = _sortHpDesc ?? false
+        PokemonList = sortHpDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Stats[0].BaseStat).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Stats[0].BaseStat).ToList();
-        _sortHpDesc = !(_sortHpDesc ?? false);
+        sortHpDesc = !(sortHpDesc ?? false);
     }
 
-    protected void SortAttack()
+    private void SortAttack()
     {
-        PokemonList = _sortAttackDesc ?? false
+        PokemonList = sortAttackDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Stats[1].BaseStat).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Stats[1].BaseStat).ToList();
-        _sortAttackDesc = !(_sortAttackDesc ?? false);
+        sortAttackDesc = !(sortAttackDesc ?? false);
     }
 
-    protected void SortDefense()
+    private void SortDefense()
     {
-        PokemonList = _sortDefenseDesc ?? false
+        PokemonList = sortDefenseDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Stats[2].BaseStat).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Stats[2].BaseStat).ToList();
-        _sortDefenseDesc = !(_sortDefenseDesc ?? false);
+        sortDefenseDesc = !(sortDefenseDesc ?? false);
     }
 
-    protected void SortSpecialAttack()
+    private void SortSpecialAttack()
     {
-        PokemonList = _sortSpecialAttackDesc ?? false
+        PokemonList = sortSpecialAttackDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Stats[3].BaseStat).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Stats[3].BaseStat).ToList();
-        _sortSpecialAttackDesc = !(_sortSpecialAttackDesc ?? false);
+        sortSpecialAttackDesc = !(sortSpecialAttackDesc ?? false);
     }
 
-    protected void SortSpecialDefense()
+    private void SortSpecialDefense()
     {
-        PokemonList = _sortSpecialDefenseDesc ?? false
+        PokemonList = sortSpecialDefenseDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Stats[4].BaseStat).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Stats[4].BaseStat).ToList();
-        _sortSpecialDefenseDesc = !(_sortSpecialDefenseDesc ?? false);
+        sortSpecialDefenseDesc = !(sortSpecialDefenseDesc ?? false);
     }
 
-    protected void Speed()
+    private void Speed()
     {
-        PokemonList = _sortSpeedDesc ?? false
+        PokemonList = sortSpeedDesc ?? false
             ? PokemonList?.OrderByDescending(p => p.Pokemon.Stats[5].BaseStat).ToList()
             : PokemonList?.OrderBy(p => p.Pokemon.Stats[5].BaseStat).ToList();
-        _sortSpeedDesc = !(_sortSpeedDesc ?? false);
+        sortSpeedDesc = !(sortSpeedDesc ?? false);
     }
 
-    protected static string GetArrowString(bool? sortDesc) =>
+    private static string GetArrowString(bool? sortDesc) =>
         sortDesc == null ? string.Empty : (bool)sortDesc ? "asc" : "desc";
 }
