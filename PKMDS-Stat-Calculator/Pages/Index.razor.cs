@@ -1,7 +1,6 @@
 ﻿namespace PKMDS_Stat_Calculator.Pages;
 
-[Route("/")]
-public partial class FetchData
+public partial class Index
 {
     private readonly IList<PokemonCalculated> pokemonList = new List<PokemonCalculated>();
 

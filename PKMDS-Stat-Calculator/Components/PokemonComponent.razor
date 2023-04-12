@@ -1,51 +1,52 @@
-﻿<br />
-<label for="chkShowSprite">Show Sprite</label>
-<input id="chkShowSprite" type="checkbox" @bind=showSprite />
-<br />
+﻿<MudPaper Class="mb-2">
+    <MudCheckBox Label="Show Sprite"
+                 @bind-Checked="showSprite" />
+</MudPaper>
 
 @if (PokemonList is not null)
 {
-    <table class="table">
-        <thead>
-            <tr>
-                @if (showSprite)
-                {
-                    <th></th>
-                }
-                <th @onclick="SortId">Id @(GetArrowString(sortIdDesc))</th>
-                <th @onclick="SortName">Name @(GetArrowString(sortNameDesc))</th>
-                <th @onclick="SortType">Type @(GetArrowString(sortTypeDesc))</th>
-                <th @onclick="SortHp">HP @(GetArrowString(sortHpDesc))</th>
-                <th @onclick="SortAttack">Attack @(GetArrowString(sortAttackDesc))</th>
-                <th @onclick="SortDefense">Defense @(GetArrowString(sortDefenseDesc))</th>
-                <th @onclick="SortSpecialAttack">Special Attack @(GetArrowString(sortSpecialAttackDesc))</th>
-                <th @onclick="SortSpecialDefense">Special Defense @(GetArrowString(sortSpecialDefenseDesc))</th>
-                <th @onclick="Speed">Speed @(GetArrowString(sortSpeedDesc))</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var pokemon in PokemonList)
+    <MudTable Items="@PokemonList">
+        <HeaderContent>
+            @if (showSprite)
             {
-                <tr>
-                    @if (showSprite)
-                    {
-                        <td>
-                            <img class="pokemon-sprite" src="@pokemon.Pokemon.Sprites.FrontDefault" alt="" />
-                        </td>
-                    }
-                    <td>@pokemon.Pokemon.Id.ToString()</td>
-                    <td>@pokemon.Pokemon.Name</td>
-                    <td>@GetPokemonTypes(pokemon.Pokemon)</td>
-                    <td>@pokemon.Pokemon.Stats[0].BaseStat</td>
-                    <td>@pokemon.Pokemon.Stats[1].BaseStat</td>
-                    <td>@pokemon.Pokemon.Stats[2].BaseStat</td>
-                    <td>@pokemon.Pokemon.Stats[3].BaseStat</td>
-                    <td>@pokemon.Pokemon.Stats[4].BaseStat</td>
-                    <td>@pokemon.Pokemon.Stats[5].BaseStat</td>
-                    <td><button class="btn-danger delete-button" @onclick="@(() => RemoveRow(pokemon))">X</button></td>
-                </tr>
+                <MudTh></MudTh>
             }
-        </tbody>
-    </table>
+            <MudTh>Id</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>Type</MudTh>
+            <MudTh>HP</MudTh>
+            <MudTh>Attack</MudTh>
+            <MudTh>Defense</MudTh>
+            <MudTh>Special Attack</MudTh>
+            <MudTh>Special Defense</MudTh>
+            <MudTh>Speed</MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            @if (showSprite)
+            {
+                <MudTd>
+                    <MudImage Src="@context.Pokemon.Sprites.FrontDefault"
+                              Alt="@context.Pokemon.Name" />
+                </MudTd>
+            }
+            <MudTd DataLabel="Id">@context.Pokemon.Id</MudTd>
+            <MudTd DataLabel="Name">@context.Pokemon.Name</MudTd>
+            <MudTd DataLabel="Type">@GetPokemonTypes(context.Pokemon)</MudTd>
+            <MudTd DataLabel="HP">@context.Pokemon.Stats[0].BaseStat</MudTd>
+            <MudTd DataLabel="Attack">@context.Pokemon.Stats[1].BaseStat</MudTd>
+            <MudTd DataLabel="Defense">@context.Pokemon.Stats[2].BaseStat</MudTd>
+            <MudTd DataLabel="Special Attack">@context.Pokemon.Stats[3].BaseStat</MudTd>
+            <MudTd DataLabel="Special Defense">@context.Pokemon.Stats[4].BaseStat</MudTd>
+            <MudTd DataLabel="Speed">@context.Pokemon.Stats[5].BaseStat</MudTd>
+            <MudTd>
+                <MudButton Color="Color.Error"
+                           Variant="Variant.Outlined"
+                           Size="Size.Small"
+                           OnClick="@(_ => RemoveRow(context))">
+                    X
+                </MudButton>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
 }

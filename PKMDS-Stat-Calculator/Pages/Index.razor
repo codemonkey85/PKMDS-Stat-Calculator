@@ -1,0 +1,34 @@
+@page "/"
+
+@if (errorMessage is not null)
+{
+    <MudAlert Severity="@Severity.Error">
+        @errorMessage
+    </MudAlert>
+}
+else if (!pokemonNames.Any())
+{
+    <MudText Typo="@Typo.body1">
+        Loading...
+    </MudText>
+}
+else
+{
+    <select @bind="selectedPokemon">
+        <option value=@string.Empty>(Select)</option>
+        @foreach (var pokemonName in pokemonNames)
+        {
+            <option value="@pokemonName">@pokemonName</option>
+        }
+    </select>
+
+    <MudButton OnClick="@(async _ => await ButtonClicked())">
+        Get Stats
+    </MudButton>
+
+    <MudText>
+        Showing stats for @(pokemonList.Count) Pokemon.
+    </MudText>
+
+    <PokemonComponent PokemonList="@pokemonList" />
+}

@@ -36,7 +36,7 @@ public class PokemonCalculated
         set;
     } = new();
 
-    private PokeApiNet.Nature Nature
+    private Nature Nature
     {
         get;
         set;

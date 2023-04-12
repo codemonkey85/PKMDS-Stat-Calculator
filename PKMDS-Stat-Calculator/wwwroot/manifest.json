@@ -1,6 +1,6 @@
 {
-  "name": "PKMDS-Stat-Calculator",
-  "short_name": "PKMDS-Stat-Calculator",
+  "name": "PKMDS Stat Calculator",
+  "short_name": "PKMDS Stat Calculator",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
