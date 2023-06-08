@@ -49,7 +49,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-krDh8ZKqEt0CWu2y5VpjgLXuJjNJIn5K2qTgh4RHRuU=",
+      "hash": "sha256-sVEK4qsVClvBfRjMuANZF7kj15ukFRM983tO++yMcqs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -129,7 +129,7 @@
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-      "hash": "sha256-w2GZTh7K+UZPLTQ7NQYbjCOeoLE5YPLLEVdLDPkthXQ=",
+      "hash": "sha256-lbZ7VAVXY5ILOSKxFSHgNLd9aPd8RnOCk9GZU5BXAzA=",
       "url": "_framework\/MudBlazor.dll"
     },
     {
@@ -141,7 +141,7 @@
       "url": "_framework\/Newtonsoft.Json.dll"
     },
     {
-      "hash": "sha256-2rvLC9owaOGiT2gaEmRUXV6UIViC\/QEquAkux\/bgXlk=",
+      "hash": "sha256-xb1SBuS1P7sH1\/J\/3yfU2uDY1QPQcZ\/ZM+MCW7YCefc=",
       "url": "_framework\/PKMDS-Stat-Calculator.dll"
     },
     {
@@ -209,7 +209,7 @@
       "url": "_framework\/System.Drawing.Primitives.dll"
     },
     {
-      "hash": "sha256-nuwPjFEhyDwjKGN5Mfyl1gPxT+0bz90eed5oT8DOsg0=",
+      "hash": "sha256-+99MGysqaeE5zzQo3mCeYZKD\/CqIDhk7oxQYTteKnac=",
       "url": "_framework\/System.Linq.dll"
     },
     {
@@ -233,7 +233,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-0FJaMuFpBlu7V5UqRGiU1s8ZWmmJeNIiURaM7Iq2if0=",
+      "hash": "sha256-lqxIf926TrAiJVXDfbAleo\/d4ivqlt1A+afGPGh5h2E=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -293,9 +293,9 @@
       "url": "_content\/MudBlazor\/MudBlazor.min.css"
     },
     {
-      "hash": "sha256-kySqKNtfFj0tmgbuAqn6owqTKDDpA\/M6Vc5Wmm6eW54=",
+      "hash": "sha256-tTa2A0bEeBBsVFCVPGG+V4yr6d9IiJbwAoHw\/oV1m+g=",
       "url": "_content\/MudBlazor\/MudBlazor.min.js"
     }
   ],
-  "version": "+uSYlN2s"
+  "version": "svahYIgn"
 };
