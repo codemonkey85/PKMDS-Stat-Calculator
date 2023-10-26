@@ -1,0 +1,10 @@
+﻿<h3>NewPokemonStatsForm</h3>
+
+<EditForm Model="@PokemonStats"
+          OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <MudButton ButtonType="@ButtonType.Submit">
+        Add
+    </MudButton>
+</EditForm>

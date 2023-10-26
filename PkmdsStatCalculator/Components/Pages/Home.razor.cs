@@ -2,8 +2,6 @@ namespace PkmdsStatCalculator.Components.Pages;
 
 public partial class Home
 {
-    private const string Language = "en";
-
     private readonly List<PokemonStats> PokemonStatsList =
         [
             new()
@@ -14,7 +12,12 @@ public partial class Home
                 Nature = Nature.Hardy,
                 FormId = 0,
                 Level = 100,
-                GameStrings = GameInfo.GetStrings(Language),
             },
         ];
+
+    private void AddPokemonStats(PokemonStats stats)
+    {
+        PokemonStatsList.Add(stats);
+        StateHasChanged();
+    }
 }
