@@ -2,15 +2,7 @@
 
 public partial class PokemonViewComponent
 {
-    [Parameter, EditorRequired] public int Generation { get; set; }
-
-    [Parameter, EditorRequired] public GameVersion GameVersion { get; set; }
-
-    [Parameter, EditorRequired] public Species PokemonSpecies { get; set; }
-
-    [Parameter, EditorRequired] public Nature PokemonNature { get; set; }
-
-    [Parameter, EditorRequired] public byte PokemonFormId { get; set; }
+    [Parameter, EditorRequired] public PokemonStats PokemonStats { get; set; } = new();
 
     private PKM? Pokemon { get; set; }
 
@@ -22,13 +14,13 @@ public partial class PokemonViewComponent
     {
         base.OnParametersSet();
 
-        Pokemon = EntityBlank.GetBlank(Generation, GameVersion);
+        Pokemon = EntityBlank.GetBlank(PokemonStats.Generation, PokemonStats.GameVersion);
 
-        Pokemon.Species = (ushort)PokemonSpecies;
-        Pokemon.Form = PokemonFormId;
+        Pokemon.Species = (ushort)PokemonStats.Species;
+        Pokemon.Form = PokemonStats.FormId;
 
-        Pokemon.MaximizeLevel();
-        Pokemon.Nature = (int)PokemonNature;
+        Pokemon.CurrentLevel = PokemonStats.Level;
+        Pokemon.Nature = (int)PokemonStats.Nature;
 
         Span<ushort> stats = stackalloc ushort[6];
         Pokemon.LoadStats(Pokemon.PersonalInfo, stats);
