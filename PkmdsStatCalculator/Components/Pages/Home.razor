@@ -6,4 +6,7 @@
 
 Here is a sample:
 
-<PokemonViewComponent PokemonStats="PokemonStats" />
+@foreach (var pokemonStats in PokemonStatsList)
+{
+    <PokemonViewComponent PokemonStats="pokemonStats" />
+}

@@ -13,4 +13,6 @@ public class PokemonStats
     public byte FormId { get; set; }
 
     public int Level { get; set; }
+
+    public GameStrings GameStrings { get; set; } = default!;
 }

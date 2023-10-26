@@ -6,8 +6,6 @@ public partial class PokemonViewComponent
 
     private PKM? Pokemon { get; set; }
 
-    private const string EnglishLang = "en";
-
     private static string[] NatureStatShortNames => new[] { "Atk", "Def", "Spe", "SpA", "SpD" };
 
     protected override void OnParametersSet()
@@ -39,11 +37,11 @@ public partial class PokemonViewComponent
 
     private string GetPokemonSpeciesName() => Pokemon is null
         ? string.Empty
-        : GameInfo.GetStrings(EnglishLang).Species[Pokemon.Species];
+        : PokemonStats.GameStrings.Species[Pokemon.Species];
 
     private string GetPokemonNatureName() => Pokemon is null
         ? string.Empty
-        : GameInfo.GetStrings(EnglishLang).Natures[Pokemon.Nature];
+        : PokemonStats.GameStrings.Natures[Pokemon.Nature];
 
     private string GetPokemonFormName() => Pokemon is null
         ? string.Empty
