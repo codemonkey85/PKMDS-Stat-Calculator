@@ -1,0 +1,39 @@
+﻿@if (Pokemon is null)
+{
+    <span>Loading...</span>
+}
+else
+{
+    <div>
+        Species: @GetPokemonSpeciesName()
+    </div>
+    <div>
+        Nature: @GetPokemonNatureName() @GetStatModifierString()
+    </div>
+    <div>
+        Form: @GetPokemonFormName()
+    </div>
+    <div>
+        Level: @Pokemon.CurrentLevel
+    </div>
+    <ul>
+        <li>
+            HP: @Pokemon.Stats[0] (IV @Pokemon.IV_HP, EV @Pokemon.EV_HP)
+        </li>
+        <li>
+            Attack: @Pokemon.Stats[1] (IV @Pokemon.IV_ATK, EV @Pokemon.EV_ATK)
+        </li>
+        <li>
+            Defense: @Pokemon.Stats[2] (IV @Pokemon.IV_DEF, EV @Pokemon.EV_DEF)
+        </li>
+        <li>
+            Speed: @Pokemon.Stats[3] (IV @Pokemon.IV_SPE, EV @Pokemon.EV_SPE)
+        </li>
+        <li>
+            Special Attack: @Pokemon.Stats[4] (IV @Pokemon.IV_SPA, EV @Pokemon.EV_SPA)
+        </li>
+        <li>
+            Special Defense: @Pokemon.Stats[5] (IV @Pokemon.IV_SPD, EV @Pokemon.EV_SPD)
+        </li>
+    </ul>
+}
