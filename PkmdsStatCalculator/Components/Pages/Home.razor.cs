@@ -3,11 +3,14 @@
 public partial class Home
 {
     private const string DefaultLanguage = "en";
+    private const LanguageID DefaultLanguageId = LanguageID.English;
     private const int Hp = 0, Atk = 1, Def = 2, SpA = 3, SpD = 4, Spe = 5;
 
     private List<PKM> PokemonList { get; set; } = [];
 
     private string Language { get; set; } = DefaultLanguage;
+
+    private LanguageID LanguageId { get; set; } = DefaultLanguageId;
 
     public int Generation { get; set; } = 9;
 
@@ -19,10 +22,22 @@ public partial class Home
 
     private PokemonStats NewPokemonStats { get; set; } = new PokemonStats();
 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        InitializeStrings();
+    }
+
     private void OnValidSubmit()
     {
         PokemonList.Add(GeneratePokemonStats(NewPokemonStats));
         NewPokemonStats = new PokemonStats();
+    }
+
+    private void InitializeStrings()
+    {
+        var sav = SaveUtil.GetBlankSAV(GameVersion, "TRAINER", LanguageId);
+        LocalizeUtil.InitializeStrings(Language, sav);
     }
 
     private PKM GeneratePokemonStats(PokemonStats pokemonStats)

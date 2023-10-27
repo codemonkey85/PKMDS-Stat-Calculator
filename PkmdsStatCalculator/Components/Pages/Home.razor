@@ -11,6 +11,7 @@
     <MudAutocomplete T="ComboItem"
                      Label="Species"
                      Variant="@Variant.Outlined"
+                     SearchFunc="@((searchString) => Task.FromResult(SearchPokemonNames(searchString)))"
                      ToStringFunc="@((species) => species.Text)" />
 
     <MudButton Color="@Color.Primary"
