@@ -8,7 +8,10 @@
           OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator />
 
-    <MudButton ButtonType="@ButtonType.Submit">
+    <MudButton Color="@Color.Primary"
+               Variant="@Variant.Filled"
+               StartIcon="@Icons.Material.Filled.Add"
+               ButtonType="@ButtonType.Submit">
         Add
     </MudButton>
 </EditForm>
@@ -28,14 +31,14 @@
     </HeaderContent>
     <RowTemplate>
         <MudTd>@GetPokemonSpeciesName(context)</MudTd>
-            <MudTd>@GetPokemonNatureName(context) @GetStatModifierString(context)</MudTd>
-            <MudTd>@GetPokemonFormName(context)</MudTd>
-            <MudTd>@context.CurrentLevel</MudTd>
-            <MudTd>@context.Stats[0]</MudTd>
-            <MudTd>@context.Stats[1]</MudTd>
-            <MudTd>@context.Stats[2]</MudTd>
-            <MudTd>@context.Stats[3]</MudTd>
-            <MudTd>@context.Stats[4]</MudTd>
-            <MudTd>@context.Stats[5]</MudTd>
-        </RowTemplate>
-    </MudTable>
+        <MudTd>@GetPokemonNatureName(context) @GetStatModifierString(context)</MudTd>
+        <MudTd>@GetPokemonFormName(context)</MudTd>
+        <MudTd>@context.CurrentLevel</MudTd>
+        <MudTd>@context.Stats[Hp]</MudTd>
+        <MudTd>@context.Stats[Atk]</MudTd>
+        <MudTd>@context.Stats[Def]</MudTd>
+        <MudTd>@context.Stats[Spe]</MudTd>
+        <MudTd>@context.Stats[SpA]</MudTd>
+        <MudTd>@context.Stats[SpD]</MudTd>
+    </RowTemplate>
+</MudTable>

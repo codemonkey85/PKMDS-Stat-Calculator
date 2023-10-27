@@ -2,14 +2,20 @@
 
 public partial class Home
 {
-    private readonly List<PKM> PokemonList = [];
     private const string DefaultLanguage = "en";
+    private const int Hp = 0, Atk = 1, Def = 2, SpA = 3, SpD = 4, Spe = 5;
+
+    private List<PKM> PokemonList { get; set; } = [];
 
     private string Language { get; set; } = DefaultLanguage;
 
+    public int Generation { get; set; } = 9;
+
+    public GameVersion GameVersion { get; set; } = GameVersion.SV;
+
     private GameStrings GameStrings { get; set; } = GameInfo.GetStrings(DefaultLanguage);
 
-    private static string[] NatureStatShortNames => new[] { "Atk", "Def", "Spe", "SpA", "SpD" };
+    private static string[] NatureStatShortNames => ["Atk", "Def", "Spe", "SpA", "SpD"];
 
     private PokemonStats NewPokemonStats { get; set; } = new PokemonStats();
 
@@ -21,7 +27,7 @@ public partial class Home
 
     private PKM GeneratePokemonStats(PokemonStats pokemonStats)
     {
-        var pokemon = EntityBlank.GetBlank(pokemonStats.Generation, pokemonStats.GameVersion);
+        var pokemon = EntityBlank.GetBlank(Generation, GameVersion);
 
         pokemon.Species = (ushort)pokemonStats.Species;
         pokemon.Form = pokemonStats.FormId;
@@ -43,7 +49,9 @@ public partial class Home
             return string.Empty;
         }
         var (up, down) = NatureAmp.GetNatureModification(pokemon.Nature);
-        return up == down ? "(Neutral)" : $"({NatureStatShortNames[up]} ↑, {NatureStatShortNames[down]} ↓)";
+        return up == down
+            ? "(Neutral)"
+            : $"({NatureStatShortNames[up]} ↑, {NatureStatShortNames[down]} ↓)";
     }
 
     private string GetPokemonSpeciesName(PKM pokemon) => pokemon is null
@@ -56,5 +64,10 @@ public partial class Home
 
     private static string GetPokemonFormName(PKM pokemon) => pokemon is null
         ? string.Empty
-        : FormConverter.GetFormList(pokemon.Species, GameInfo.Strings.types, GameInfo.Strings.forms, GameInfo.GenderSymbolUnicode, pokemon.Context)[pokemon.Form];
+        : FormConverter.GetFormList(
+            pokemon.Species,
+            GameInfo.Strings.types,
+            GameInfo.Strings.forms,
+            GameInfo.GenderSymbolUnicode,
+            pokemon.Context)[pokemon.Form];
 }
