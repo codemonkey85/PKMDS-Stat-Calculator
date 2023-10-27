@@ -69,5 +69,11 @@ public partial class Home
             GameInfo.Strings.types,
             GameInfo.Strings.forms,
             GameInfo.GenderSymbolUnicode,
-            pokemon.Context)[pokemon.Form];
+    pokemon.Context)[pokemon.Form];
+
+    public IEnumerable<ComboItem> SearchPokemonNames(string searchString) => searchString is not { Length: > 0 }
+        ? Enumerable.Empty<ComboItem>()
+        : GameInfo.FilteredSources.Species
+            .Where(species => species.Text.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+            .OrderBy(species => species.Text);
 }
