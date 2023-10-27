@@ -28,8 +28,19 @@ public partial class Home
         InitializeStrings();
     }
 
-    private void OnValidSubmit()
+    private void OnValidSubmit(EditContext context)
     {
+        var validation = context.Validate();
+        Console.WriteLine($"Valid: {validation}");
+        var validationMessages = context.GetValidationMessages()?.ToList();
+        if (validationMessages is { Count: > 0 })
+        {
+            foreach (var validationMessage in validationMessages)
+            {
+                Console.WriteLine(validationMessage);
+            }
+        }
+
         PokemonList.Add(GeneratePokemonStats(NewPokemonStats));
         NewPokemonStats = new PokemonStats();
     }
@@ -49,6 +60,9 @@ public partial class Home
 
         pokemon.CurrentLevel = pokemonStats.Level;
         pokemon.Nature = (int)pokemonStats.Nature;
+
+        pokemon.SetIVs(pokemonStats.IvsSpan());
+        pokemon.SetEVs(pokemonStats.EvsSpan());
 
         Span<ushort> stats = stackalloc ushort[6];
         pokemon.LoadStats(pokemon.PersonalInfo, stats);
