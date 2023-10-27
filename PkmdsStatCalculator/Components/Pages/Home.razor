@@ -4,9 +4,38 @@
     PKMDS Stat Calculator
 </PageTitle>
 
-<NewPokemonStatsForm AddStatsMethod="AddPokemonStats" />
+<EditForm Model="@NewPokemonStats"
+          OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
 
-@foreach (var pokemonStats in PokemonStatsList)
-{
-    <PokemonViewComponent PokemonStats="pokemonStats" />
-}
+    <MudButton ButtonType="@ButtonType.Submit">
+        Add
+    </MudButton>
+</EditForm>
+
+<MudTable Items="@PokemonList">
+    <HeaderContent>
+        <MudTd>Species</MudTd>
+        <MudTd>Nature</MudTd>
+        <MudTd>Form</MudTd>
+        <MudTd>Level</MudTd>
+        <MudTd>HP</MudTd>
+        <MudTd>Attack</MudTd>
+        <MudTd>Defense</MudTd>
+        <MudTd>Speed</MudTd>
+        <MudTd>Special Attack</MudTd>
+        <MudTd>Special Defense</MudTd>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd>@GetPokemonSpeciesName(context)</MudTd>
+            <MudTd>@GetPokemonNatureName(context) @GetStatModifierString(context)</MudTd>
+            <MudTd>@GetPokemonFormName(context)</MudTd>
+            <MudTd>@context.CurrentLevel</MudTd>
+            <MudTd>@context.Stats[0]</MudTd>
+            <MudTd>@context.Stats[1]</MudTd>
+            <MudTd>@context.Stats[2]</MudTd>
+            <MudTd>@context.Stats[3]</MudTd>
+            <MudTd>@context.Stats[4]</MudTd>
+            <MudTd>@context.Stats[5]</MudTd>
+        </RowTemplate>
+    </MudTable>
