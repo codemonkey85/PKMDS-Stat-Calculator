@@ -28,26 +28,24 @@
 <MudTable Items="@PokemonList">
     <HeaderContent>
         <MudTd>Species</MudTd>
-        <MudTd>Nature</MudTd>
         <MudTd>Form</MudTd>
-        <MudTd>Level</MudTd>
         <MudTd>HP</MudTd>
-        <MudTd>Attack</MudTd>
-        <MudTd>Defense</MudTd>
-        <MudTd>Speed</MudTd>
-        <MudTd>Special Attack</MudTd>
-        <MudTd>Special Defense</MudTd>
+        <MudTd>Atk</MudTd>
+        <MudTd>Def</MudTd>
+        <MudTd>Spe</MudTd>
+        <MudTd>SpA</MudTd>
+        <MudTd>SpD</MudTd>
+        <MudTd>BST</MudTd>
     </HeaderContent>
     <RowTemplate>
         <MudTd>@GetPokemonSpeciesName(context)</MudTd>
-        <MudTd>@GetPokemonNatureName(context) @GetStatModifierString(context)</MudTd>
         <MudTd>@GetPokemonFormName(context)</MudTd>
-        <MudTd>@context.CurrentLevel</MudTd>
-        <MudTd>@context.Stats[Hp]</MudTd>
-        <MudTd>@context.Stats[Atk]</MudTd>
-        <MudTd>@context.Stats[Def]</MudTd>
-        <MudTd>@context.Stats[Spe]</MudTd>
-        <MudTd>@context.Stats[SpA]</MudTd>
-        <MudTd>@context.Stats[SpD]</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Hp)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Atk)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Def)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Spe)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(SpA)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(SpD)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatTotal()</MudTd>
     </RowTemplate>
 </MudTable>
