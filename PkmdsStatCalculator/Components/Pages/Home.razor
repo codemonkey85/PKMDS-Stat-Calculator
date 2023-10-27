@@ -11,6 +11,8 @@
     <MudAutocomplete T="ComboItem"
                      Label="Species"
                      Variant="@Variant.Outlined"
+                     @bind-Value:get="@(GetSpeciesComboItem((ushort)NewPokemonStats.Species))"
+                     @bind-Value:set="@((species) => NewPokemonStats.Species = (Species)species.Value)"
                      SearchFunc="@((searchString) => Task.FromResult(SearchPokemonNames(searchString)))"
                      ToStringFunc="@((species) => species.Text)" />
 

@@ -91,4 +91,7 @@ public partial class Home
         : GameInfo.FilteredSources.Species
             .Where(species => species.Text.Contains(searchString, StringComparison.OrdinalIgnoreCase))
             .OrderBy(species => species.Text);
+
+    public ComboItem GetSpeciesComboItem(ushort speciesId) => GameInfo.FilteredSources.Species
+        .FirstOrDefault(species => species.Value == speciesId) ?? default!;
 }
