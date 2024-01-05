@@ -1,0 +1,51 @@
+﻿@page "/"
+
+<PageTitle>
+    PKMDS Stat Calculator
+</PageTitle>
+
+<EditForm Model="@NewPokemonStats"
+          OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <MudAutocomplete T="ComboItem"
+                     Label="Species"
+                     Variant="@Variant.Outlined"
+                     @bind-Value:get="@(GetSpeciesComboItem((ushort)NewPokemonStats.Species))"
+                     @bind-Value:set="@((species) => NewPokemonStats.Species = (Species)species.Value)"
+                     SearchFunc="@((searchString) => Task.FromResult(SearchPokemonNames(searchString)))"
+                     ToStringFunc="@((species) => species.Text)" />
+
+    <MudButton Color="@Color.Primary"
+               Variant="@Variant.Filled"
+               StartIcon="@Icons.Material.Filled.Add"
+               ButtonType="@ButtonType.Submit">
+        Add
+    </MudButton>
+</EditForm>
+
+<MudTable Items="@PokemonList">
+    <HeaderContent>
+        <MudTd>Species</MudTd>
+        <MudTd>Form</MudTd>
+        <MudTd>HP</MudTd>
+        <MudTd>Atk</MudTd>
+        <MudTd>Def</MudTd>
+        <MudTd>Spe</MudTd>
+        <MudTd>SpA</MudTd>
+        <MudTd>SpD</MudTd>
+        <MudTd>BST</MudTd>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd>@GetPokemonSpeciesName(context)</MudTd>
+        <MudTd>@GetPokemonFormName(context)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Hp)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Atk)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Def)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(Spe)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(SpA)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatValue(SpD)</MudTd>
+        <MudTd>@context.PersonalInfo.GetBaseStatTotal()</MudTd>
+    </RowTemplate>
+</MudTable>
