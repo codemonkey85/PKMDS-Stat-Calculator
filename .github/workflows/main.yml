@@ -22,13 +22,12 @@ jobs:
 
       # publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
-        run: dotnet publish "PKMDS-Stat-Calculator\\PKMDS-Stat-Calculator.csproj" -c Release -o release --nologo
+        run: dotnet publish "PkmdsStatCalculator/PkmdsStatCalculator.csproj" -c Release -o release --nologo
 
       # changes the base-tag in index.html from '/' to 'PKMDS-Stat-Calculator' to match GitHub Pages repository subdirectory
       - name: Change base-tag in index.html from / to PKMDS-Stat-Calculator
         run: sed -i 's/<base href="\/" \/>/<base href="\/PKMDS-Stat-Calculator\/" \/>/g' release/wwwroot/index.html
 
-      # changes the base-tag in index.html from '/' to 'PKMDS-Stat-Calculator' to match GitHub Pages repository subdirectory
       - name: Fix service-worker-assets.js hashes
         working-directory: release/wwwroot
         run: |
