@@ -32,8 +32,6 @@ public class PokemonStats
     [Required, Range(0, 31)]
     public int SpDIv { get; set; }
 
-    public Span<int> IvsSpan() => new([HpIv, AtkIv, DefIv, SpeIv, SpAIv, SpDIv]);
-
     [Required, Range(0, 255)]
     public int HpEv { get; set; }
 
@@ -51,6 +49,8 @@ public class PokemonStats
 
     [Required, Range(0, 255)]
     public int SpDEv { get; set; }
+
+    public Span<int> IvsSpan() => new([HpIv, AtkIv, DefIv, SpeIv, SpAIv, SpDIv]);
 
     public Span<int> EvsSpan() => new([HpEv, AtkEv, DefEv, SpeEv, SpAEv, SpDEv]);
 }

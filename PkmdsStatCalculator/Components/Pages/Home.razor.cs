@@ -6,21 +6,21 @@ public partial class Home
     private const LanguageID DefaultLanguageId = LanguageID.English;
     private const int Hp = 0, Atk = 1, Def = 2, SpA = 3, SpD = 4, Spe = 5;
 
-    private List<PKM> PokemonList { get; set; } = [];
+    private List<PKM> PokemonList { get; } = [];
 
-    private string Language { get; set; } = DefaultLanguage;
+    private string Language { get; } = DefaultLanguage;
 
     private LanguageID LanguageId { get; set; } = DefaultLanguageId;
 
-    public int Generation { get; set; } = 9;
+    private byte Generation { get; } = 9;
 
-    public GameVersion GameVersion { get; set; } = GameVersion.SV;
+    private GameVersion GameVersion { get; } = GameVersion.SV;
 
-    private GameStrings GameStrings { get; set; } = GameInfo.GetStrings(DefaultLanguage);
+    private GameStrings GameStrings { get; } = GameInfo.GetStrings(DefaultLanguage);
 
     private static string[] NatureStatShortNames => ["Atk", "Def", "Spe", "SpA", "SpD"];
 
-    private PokemonStats NewPokemonStats { get; set; } = new PokemonStats();
+    private PokemonStats NewPokemonStats { get; set; } = new();
 
     protected override void OnInitialized()
     {
@@ -32,7 +32,7 @@ public partial class Home
     {
         var validation = context.Validate();
         Console.WriteLine($"Valid: {validation}");
-        var validationMessages = context.GetValidationMessages()?.ToList();
+        var validationMessages = context.GetValidationMessages().ToList();
         if (validationMessages is { Count: > 0 })
         {
             foreach (var validationMessage in validationMessages)
@@ -45,11 +45,7 @@ public partial class Home
         NewPokemonStats = new PokemonStats();
     }
 
-    private void InitializeStrings()
-    {
-        var sav = SaveUtil.GetBlankSAV(GameVersion, "TRAINER", LanguageId);
-        LocalizeUtil.InitializeStrings(Language, sav);
-    }
+    private void InitializeStrings() => LocalizeUtil.InitializeStrings(Language);
 
     private PKM GeneratePokemonStats(PokemonStats pokemonStats)
     {
@@ -58,8 +54,8 @@ public partial class Home
         pokemon.Species = (ushort)pokemonStats.Species;
         pokemon.Form = pokemonStats.FormId;
 
-        pokemon.CurrentLevel = pokemonStats.Level;
-        pokemon.Nature = (int)pokemonStats.Nature;
+        pokemon.CurrentLevel = (byte)pokemonStats.Level;
+        pokemon.Nature = pokemonStats.Nature;
 
         pokemon.SetIVs(pokemonStats.IvsSpan());
         pokemon.SetEVs(pokemonStats.EvsSpan());
@@ -73,39 +69,35 @@ public partial class Home
 
     private static string GetStatModifierString(PKM pokemon)
     {
-        if (pokemon is null)
-        {
-            return string.Empty;
-        }
         var (up, down) = NatureAmp.GetNatureModification(pokemon.Nature);
         return up == down
             ? "(Neutral)"
             : $"({NatureStatShortNames[up]} ↑, {NatureStatShortNames[down]} ↓)";
     }
 
-    private string GetPokemonSpeciesName(PKM pokemon) => pokemon is null
-        ? string.Empty
-        : GameStrings.Species[pokemon.Species];
+    private string GetPokemonSpeciesName(PKM pokemon) => GameStrings.Species[pokemon.Species];
 
-    private string GetPokemonNatureName(PKM pokemon) => pokemon is null
-        ? string.Empty
-        : GameStrings.Natures[pokemon.Nature];
+    private string GetPokemonNatureName(PKM pokemon) => GameStrings.Natures[(int)pokemon.Nature];
 
-    private static string GetPokemonFormName(PKM pokemon) => pokemon is null
-        ? string.Empty
-        : FormConverter.GetFormList(
-            pokemon.Species,
-            GameInfo.Strings.types,
-            GameInfo.Strings.forms,
-            GameInfo.GenderSymbolUnicode,
-    pokemon.Context)[pokemon.Form];
+    private static string GetPokemonFormName(PKM pokemon) => FormConverter.GetFormList(
+        pokemon.Species,
+        GameInfo.Strings.types,
+        GameInfo.Strings.forms,
+        GameInfo.GenderSymbolUnicode,
+        pokemon.Context)[pokemon.Form];
 
-    public IEnumerable<ComboItem> SearchPokemonNames(string searchString) => searchString is not { Length: > 0 }
-        ? Enumerable.Empty<ComboItem>()
-        : GameInfo.FilteredSources.Species
-            .Where(species => species.Text.Contains(searchString, StringComparison.OrdinalIgnoreCase))
-            .OrderBy(species => species.Text);
+    private IEnumerable<ComboItem> SearchPokemonNames(string searchString) =>
+        searchString is not { Length: > 0 }
+            ? Enumerable.Empty<ComboItem>()
+            : GameInfo.Sources.SpeciesDataSource
+                .Where(species => species.Text.Contains(searchString, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(species => species.Text);
 
-    public ComboItem GetSpeciesComboItem(ushort speciesId) => GameInfo.FilteredSources.Species
-        .FirstOrDefault(species => species.Value == speciesId) ?? default!;
+    private ComboItem GetSpeciesComboItem(ushort speciesId) => GameInfo.FilteredSources.Species
+        .FirstOrDefault(species => species.Value == speciesId) ?? null!;
+
+    private Task<IEnumerable<ComboItem>> SearchFunction(string? searchString, CancellationToken cancellationToken) =>
+        string.IsNullOrEmpty(searchString)
+            ? Task.FromResult<IEnumerable<ComboItem>>([])
+            : Task.FromResult(SearchPokemonNames(searchString));
 }
