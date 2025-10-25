@@ -2,6 +2,7 @@ name: Deploy to GitHub Pages
 
 # Run workflow on every push to the master branch
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 
@@ -33,7 +34,7 @@ jobs:
 
       # changes the base-tag in index.html from '/' to 'PKMDS-Stat-Calculator' to match GitHub Pages repository subdirectory
       - name: Change base-tag in index.html from / to PKMDS-Stat-Calculator
-        run: sed -i 's/<base href="\/" \/>/<base href="\/PKMDS-Stat-Calculator\/" \/>/g' release/wwwroot/index.html
+        run: sed -i 's|<base href="/"\s*/>|<base href="/PKMDS-Stat-Calculator/" />|g' release/wwwroot/index.html
 
       # copy index.html to 404.html to serve the same file when a file is not found
       - name: copy index.html to 404.html
@@ -42,12 +43,6 @@ jobs:
       # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
-
-      - name: Update version
-        uses: datamonsters/replace-action@v2
-        with:
-          files: 'release/wwwroot/service-worker.published.js'
-          replacements: '%%CACHE_VERSION%%=${{ github.run_id }}'
 
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.7.3
