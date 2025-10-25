@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "PkmdsStatCalculator",
   "resources": {
-    "hash": "sha256-JnN12O5LjMghJmk2T3KKUX9pT3zoC1b4S/xd8Nc5y+U=",
+    "hash": "sha256-uC1ScAu+3WTrNK1cEuFs+AYhd9GGN1de21RRkCmoxk8=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.q0bcuote7h.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Forms.py1712x3yh.wasm": "Microsoft.AspNetCore.Components.Forms.wasm",
@@ -55,7 +55,7 @@
       "System.Text.RegularExpressions.p757uopoe8.wasm": "System.Text.RegularExpressions.wasm",
       "System.8rv0tdtrxz.wasm": "System.wasm",
       "System.Private.CoreLib.h6kpnl038i.wasm": "System.Private.CoreLib.wasm",
-      "PkmdsStatCalculator.5coyu1u4o6.wasm": "PkmdsStatCalculator.wasm",
+      "PkmdsStatCalculator.3a276fxx7w.wasm": "PkmdsStatCalculator.wasm",
       "dotnet.native.jyer9pzgvk.js": "dotnet.native.js",
       "dotnet.native.n340xkqj4c.wasm": "dotnet.native.wasm",
       "dotnet.js": "dotnet.js",
@@ -133,7 +133,7 @@
       "System.Text.Json.3o5rjopio5.wasm": "sha256-jUchp+zdkyrjxCvOGaY5Cc7LuIf1wUcDYvjDJ3El5GM=",
       "System.Text.RegularExpressions.p757uopoe8.wasm": "sha256-JeTxscjMrR9FxyyxSvIBtCcl15yHWxi0MczzxlJHo+c=",
       "System.8rv0tdtrxz.wasm": "sha256-xMF0eauQ5DkSzUozHLFFMQnL6DSJO09nJLtgag+Dzbw=",
-      "PkmdsStatCalculator.5coyu1u4o6.wasm": "sha256-tRExaR1itX8QTCEeYpOdrE8C+JaMamCKc4+oC+nVZkc="
+      "PkmdsStatCalculator.3a276fxx7w.wasm": "sha256-S7ksJ7E4qhhPJSR/4KLYMb2y/s1zoM0aKx2beqSubvw="
     }
   },
   "cacheBootResources": true,
